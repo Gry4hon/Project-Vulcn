@@ -5,23 +5,19 @@ using UnityEngine.UI;
 
 public class DefenseStateManager : MonoBehaviour
 {
-    Vector3 defenseLocation;
-    Quaternion defenseRotation;
+    public Vector3 defenseLocation;
+    public Quaternion defenseRotation;
 
-    DefenseStateSetter currentState;
+   DefenseStateSetter currentState;
    public WanderState wanderState = new WanderState();
    public DefendState defendState = new DefendState();
+   public DefenceAttackState attackState = new DefenceAttackState();
    public DefenseDeath defenseDeath = new DefenseDeath();
-
-
-
-    public GameObject generateButton;
 
     public GameObject defenseGolem;
 
-    public List<GameObject> defensePointz;
+    public int directionPick = 0;
 
-    public bool patrolPointSet = false;
 
     void Start()
     {
@@ -42,9 +38,29 @@ public class DefenseStateManager : MonoBehaviour
     }
 
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.tag == "Scrap")
+        {
+            print("owie");
+        }
 
 
 
+        if(collision.collider.tag == "Ship")
+        {
+            wanderState.moveSpeed = 0.0f;
+            StartCoroutine(rotateTimer());
+            IEnumerator rotateTimer()
+            {
+                wanderState.newGolemX += 10f;
+                yield return new WaitForSeconds(2);
+                wanderState.moveSpeed = 1.5f;
+            }
+        }
+    }
+
+    
 
 
 

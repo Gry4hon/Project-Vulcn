@@ -153,7 +153,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 23495663}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.749, y: 0, z: -1.355}
+  m_LocalPosition: {x: 2.544, y: 0, z: -0.103}
   m_LocalScale: {x: 0.056746982, y: 0.019635553, z: 0.05342599}
   m_Children: []
   m_Father: {fileID: 882348256}
@@ -528,7 +528,7 @@ GameObject:
   - component: {fileID: 32944744}
   m_Layer: 0
   m_Name: GarbagePileStandIN (6)
-  m_TagString: Untagged
+  m_TagString: Scrap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -764,6 +764,101 @@ Transform:
   m_Father: {fileID: 2096476898}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &99238854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 99238858}
+  - component: {fileID: 99238857}
+  - component: {fileID: 99238856}
+  - component: {fileID: 99238855}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &99238855
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99238854}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &99238856
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99238854}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &99238857
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99238854}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &99238858
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99238854}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.391, y: -0.036029458, z: -0.024}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &119449008
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,7 +873,7 @@ GameObject:
   - component: {fileID: 119449010}
   m_Layer: 0
   m_Name: GarbagePileStandIN (2)
-  m_TagString: Untagged
+  m_TagString: Scrap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -879,7 +974,7 @@ PrefabInstance:
     - target: {fileID: 624241015977005932, guid: 248e18378cbb4704480a843997388ff2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.419
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 624241015977005932, guid: 248e18378cbb4704480a843997388ff2,
         type: 3}
@@ -889,7 +984,7 @@ PrefabInstance:
     - target: {fileID: 624241015977005932, guid: 248e18378cbb4704480a843997388ff2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.586118
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 624241015977005932, guid: 248e18378cbb4704480a843997388ff2,
         type: 3}
@@ -963,7 +1058,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 122379944}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.898, y: 0, z: -0.22999978}
+  m_LocalPosition: {x: 2.298, y: 0, z: -0.2}
   m_LocalScale: {x: 0.056746982, y: 0.019635553, z: 0.05342599}
   m_Children: []
   m_Father: {fileID: 882348256}
@@ -1199,7 +1294,7 @@ GameObject:
   - component: {fileID: 156608449}
   m_Layer: 0
   m_Name: GarbagePileStandIN (4)
-  m_TagString: Untagged
+  m_TagString: Scrap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1295,7 +1390,7 @@ GameObject:
   - component: {fileID: 240819726}
   m_Layer: 0
   m_Name: GarbagePileStandIN (12)
-  m_TagString: Untagged
+  m_TagString: Scrap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1514,7 +1609,7 @@ GameObject:
   - component: {fileID: 392552838}
   m_Layer: 0
   m_Name: GarbagePileStandIN (7)
-  m_TagString: Untagged
+  m_TagString: Scrap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1625,7 +1720,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429509952}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.186, y: 0, z: 2.35}
+  m_LocalPosition: {x: 2.186, y: 0, z: 0.188}
   m_LocalScale: {x: 0.056746982, y: 0.019635553, z: 0.05342599}
   m_Children: []
   m_Father: {fileID: 882348256}
@@ -2129,7 +2224,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 553105357}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.889, y: 0, z: 0.8839998}
+  m_LocalPosition: {x: 2.298, y: 0, z: 0.064}
   m_LocalScale: {x: 0.056746982, y: 0.019635553, z: 0.05342599}
   m_Children: []
   m_Father: {fileID: 882348256}
@@ -2671,7 +2766,7 @@ GameObject:
   - component: {fileID: 654554517}
   m_Layer: 0
   m_Name: GarbagePileStandIN (10)
-  m_TagString: Untagged
+  m_TagString: Scrap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2782,7 +2877,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674361940}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.2990001, y: 0, z: 0.8839998}
+  m_LocalPosition: {x: 2.472, y: 0, z: 0.228}
   m_LocalScale: {x: 0.056746982, y: 0.019635553, z: 0.05342599}
   m_Children: []
   m_Father: {fileID: 882348256}
@@ -3247,7 +3342,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 745729607}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.513, y: 0, z: -0.7530005}
+  m_LocalPosition: {x: 2.173, y: 0, z: -0.2749}
   m_LocalScale: {x: 0.056746982, y: 0.019635553, z: 0.05342599}
   m_Children: []
   m_Father: {fileID: 882348256}
@@ -3778,7 +3873,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 882348255}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.077, z: 0}
+  m_LocalPosition: {x: 2.103, y: 0.587, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1500990679}
@@ -3886,8 +3981,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 9.854266, y: 0.71, z: 10}
-  m_Center: {x: -0.07287702, y: -0.35302714, z: -0.0000006096812}
+  m_Size: {x: 9.854266, y: 0.7067537, z: 10}
+  m_Center: {x: -0.07287702, y: -0.3546503, z: -0.0000006096812}
 --- !u!1 &929827644
 GameObject:
   m_ObjectHideFlags: 0
@@ -4068,7 +4163,7 @@ GameObject:
   - component: {fileID: 968316805}
   m_Layer: 0
   m_Name: GarbagePileStandIN (13)
-  m_TagString: Untagged
+  m_TagString: Scrap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4247,7 +4342,7 @@ GameObject:
   - component: {fileID: 1020369930}
   m_Layer: 0
   m_Name: GarbagePileStandIN (1)
-  m_TagString: Untagged
+  m_TagString: Scrap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4342,7 +4437,7 @@ GameObject:
   - component: {fileID: 1022768466}
   m_Layer: 0
   m_Name: GarbagePileStandIN (3)
-  m_TagString: Untagged
+  m_TagString: Scrap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4437,7 +4532,7 @@ GameObject:
   - component: {fileID: 1028458167}
   m_Layer: 0
   m_Name: GarbagePileStandIN (5)
-  m_TagString: Untagged
+  m_TagString: Scrap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4567,7 +4662,7 @@ GameObject:
   - component: {fileID: 1064700979}
   m_Layer: 0
   m_Name: GarbagePileStandIN (14)
-  m_TagString: Untagged
+  m_TagString: Scrap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4662,7 +4757,7 @@ GameObject:
   - component: {fileID: 1068603458}
   m_Layer: 0
   m_Name: GarbagePileStandIN (8)
-  m_TagString: Untagged
+  m_TagString: Scrap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5537,6 +5632,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1163603334}
   m_CullTransparentMesh: 1
+--- !u!1 &1194622998 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 624241015977005933, guid: 248e18378cbb4704480a843997388ff2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1123736062}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1194622999
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194622998}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &1269858187
 GameObject:
   m_ObjectHideFlags: 0
@@ -5552,7 +5667,7 @@ GameObject:
   - component: {fileID: 1269858190}
   m_Layer: 0
   m_Name: XR Origin
-  m_TagString: Untagged
+  m_TagString: ThePlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5788,7 +5903,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1471385211}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.851, y: 0, z: -1.3006003}
+  m_LocalPosition: {x: 2.506, y: 0, z: 0.077}
   m_LocalScale: {x: 0.056746982, y: 0.019635553, z: 0.05342599}
   m_Children: []
   m_Father: {fileID: 882348256}
@@ -6040,7 +6155,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1500990678}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.4, y: 0, z: 1.9569998}
+  m_LocalPosition: {x: 2.352, y: 0, z: -0.029}
   m_LocalScale: {x: 0.056746982, y: 0.019635553, z: 0.05342599}
   m_Children: []
   m_Father: {fileID: 882348256}
@@ -6426,101 +6541,26 @@ MonoBehaviour:
   m_HapticHoverCancelIntensity: 0
   m_HapticHoverCancelDuration: 0
   m_AllowHoverHapticsWhileSelecting: 1
---- !u!1 &1596400502
+--- !u!1 &1629631354 stripped
 GameObject:
+  m_CorrespondingSourceObject: {fileID: 624241015977005933, guid: 248e18378cbb4704480a843997388ff2,
+    type: 3}
+  m_PrefabInstance: {fileID: 121681759}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1629631355
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1596400506}
-  - component: {fileID: 1596400505}
-  - component: {fileID: 1596400504}
-  - component: {fileID: 1596400503}
-  m_Layer: 0
-  m_Name: Jerry
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &1596400503
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1596400502}
+  m_GameObject: {fileID: 1629631354}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1596400504
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1596400502}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1596400505
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1596400502}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1596400506
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1596400502}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7752514, y: 9.148822, z: 6.001087}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &1653050524
 GameObject:
   m_ObjectHideFlags: 0
@@ -6614,7 +6654,7 @@ GameObject:
   - component: {fileID: 1711510592}
   m_Layer: 0
   m_Name: GarbagePileStandIN (9)
-  m_TagString: Untagged
+  m_TagString: Scrap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6695,6 +6735,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1711510590}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1762940875 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 624241015977005933, guid: 248e18378cbb4704480a843997388ff2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1132737411}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1762940876
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762940875}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &1816938706
 GameObject:
   m_ObjectHideFlags: 0
@@ -6709,7 +6769,7 @@ GameObject:
   - component: {fileID: 1816938708}
   m_Layer: 0
   m_Name: GarbagePileStandIN (11)
-  m_TagString: Untagged
+  m_TagString: Scrap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6960,6 +7020,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 248e18378cbb4704480a843997388ff2, type: 3}
+--- !u!1 &1986712787 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 624241015977005933, guid: 248e18378cbb4704480a843997388ff2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1834786421}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1986712788
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986712787}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &2042935579
 GameObject:
   m_ObjectHideFlags: 0
@@ -6975,7 +7055,7 @@ GameObject:
   - component: {fileID: 2042935584}
   m_Layer: 0
   m_Name: GarbagePileStandIN
-  m_TagString: Ship
+  m_TagString: Scrap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

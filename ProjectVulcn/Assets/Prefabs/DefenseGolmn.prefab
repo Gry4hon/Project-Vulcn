@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 6924069339120480016}
   - component: {fileID: 4138251714982456090}
   - component: {fileID: 2865312471614549747}
+  - component: {fileID: 4743549077570486013}
   m_Layer: 0
   m_Name: DefenseCanvas
   m_TagString: Untagged
@@ -253,6 +254,18 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RaycastTriggerInteraction: 1
+--- !u!114 &4743549077570486013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6556993878199819543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 963a631a67ca42643a91e7589e26117b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6611208192334826067
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,7 +279,7 @@ GameObject:
   - component: {fileID: 6733275536014030909}
   - component: {fileID: 111577851146524554}
   - component: {fileID: 3838366532958479613}
-  - component: {fileID: 6523966973095900791}
+  - component: {fileID: 2860020809478825902}
   m_Layer: 0
   m_Name: DefenseGolmn
   m_TagString: Untagged
@@ -364,16 +377,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 591eb502eff955c42bb1eef453ba8188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generateButton: {fileID: 0}
-  defensePoint: {fileID: 0}
+  defenseLocation: {x: 0, y: 0, z: 0}
+  defenseRotation: {x: 0, y: 0, z: 0, w: 0}
   defenseGolem: {fileID: 6611208192334826067}
-  defensePointz:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  patrolPointSet: 1
---- !u!54 &6523966973095900791
+  directionPick: 0
+--- !u!54 &2860020809478825902
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

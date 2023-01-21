@@ -10,6 +10,7 @@ TagManager:
   - Ship
   - Repair
   - Ground
+  - ThePlayer
   layers:
   - Default
   - TransparentFX
