@@ -18,6 +18,8 @@ public class DefenseStateManager : MonoBehaviour
 
     public int directionPick = 0;
 
+    public List<GameObject> enemyList= new List<GameObject>();
+
 
     void Start()
     {
@@ -53,14 +55,29 @@ public class DefenseStateManager : MonoBehaviour
             StartCoroutine(rotateTimer());
             IEnumerator rotateTimer()
             {
-                wanderState.newGolemX += 10f;
+                if(wanderState.newGolemX > 0.0f)
+                {
+                    wanderState.newGolemX -= 10.0f;
+                }
+                if(wanderState.newGolemX < 0.0f)
+                {
+                    wanderState.newGolemX += 10.0f;
+                }
                 yield return new WaitForSeconds(2);
                 wanderState.moveSpeed = 1.5f;
             }
         }
     }
 
-    
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Enemy")
+        {
+           enemyList.Add(other.gameObject);
+            SwitchState(defendState);
+        }
+    }
+
 
 
 

@@ -43,7 +43,7 @@ public class WanderState : DefenseStateSetter
 
 
         if (timerEnded && !startWalkin) {
-            state.defenseGolem.transform.Rotate(0.0f, 0.0f,0.0f);
+
             startWalkin = true;
              resetTimerEnded= false;
              resetTime = 2.0f;
@@ -62,7 +62,7 @@ public class WanderState : DefenseStateSetter
             
 
             state.defenseGolem.transform.position = Vector3.MoveTowards(state.defenseGolem.transform.position, newPosition, moveSpeed * Time.deltaTime);
-
+            state.defenseGolem.transform.LookAt(newPosition);
         }
 
         if (state.defenseGolem.transform.position == newPosition)
