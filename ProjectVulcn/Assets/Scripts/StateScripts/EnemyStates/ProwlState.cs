@@ -16,8 +16,8 @@ public class ProwlState : ScrapWolfSetter
 
     Vector3 newLocation;
 
-    public float newWolfX = 0.0f;
-    public float newWolfZ = 0.0f;
+    public float newWolfForward = 0.0f;
+    public float newWolfRotation = 0.0f;
 
     public float moveSpeed = 2.0f;
 
@@ -28,6 +28,7 @@ public class ProwlState : ScrapWolfSetter
 
     public override void RunCurrentState(ScrapWolfManager state)
     {
+        /*
         if(waitTime> 0)
         {
             waitTime -= Time.deltaTime;
@@ -79,25 +80,22 @@ public class ProwlState : ScrapWolfSetter
                 resetEnded= true;
             }
         }
-
-
-
-
-
-
-
-
+        */
 
 
 
     }
+    
+
+    //float RandomForward
 
 
+    /*
     float RandomCoords(float randomNumber)
     {
         //randomNumber += 5;
         randomNumber = Random.Range(-(randomNumber), randomNumber);
         return randomNumber;
     }
-
+    */
 }
