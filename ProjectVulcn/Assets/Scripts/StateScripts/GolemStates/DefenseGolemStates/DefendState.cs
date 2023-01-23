@@ -15,7 +15,7 @@ public class DefendState : DefenseStateSetter
     {
         theTarget = state.enemyList[0];
 
-        targetLocation = new Vector3(theTarget.transform.position.x + 0.5f, state.defenseGolem.transform.position.y, theTarget.transform.position.z);
+        targetLocation = new Vector3(theTarget.transform.position.x - 0.5f, state.defenseGolem.transform.position.y, theTarget.transform.position.z);
 
         state.defenseGolem.transform.position = Vector3.MoveTowards(state.defenseGolem.transform.position, targetLocation, 2f * Time.deltaTime);
 

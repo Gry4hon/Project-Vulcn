@@ -43,24 +43,18 @@ public class WanderState : DefenseStateSetter
 
 
         if (timerEnded && !startWalkin) {
-
-            startWalkin = true;
+             startWalkin = true;
              resetTimerEnded= false;
              resetTime = 2.0f;
              newGolemX = RandomCoords(state.defenseLocation.x);
              newGolemZ = RandomCoords(state.defenseLocation.z);
-
-
         }
 
 
 
         if(newGolemX != 0 && newGolemZ != 0)
         {
-
             newPosition = new Vector3(newGolemX, state.defenseGolem.transform.position.y, newGolemZ);
-            
-
             state.defenseGolem.transform.position = Vector3.MoveTowards(state.defenseGolem.transform.position, newPosition, moveSpeed * Time.deltaTime);
             state.defenseGolem.transform.LookAt(newPosition);
         }
@@ -82,7 +76,6 @@ public class WanderState : DefenseStateSetter
                 resetEnded= true;
                 newGolemX = 0;
                 newGolemZ = 0;
-
                 startWalkin = false;
             }
         }
@@ -92,7 +85,6 @@ public class WanderState : DefenseStateSetter
     float RandomCoords(float randomNumber)
     {
         randomNumber += 10;
-
         randomNumber = Random.Range(-(randomNumber), randomNumber);
         return randomNumber;
     }

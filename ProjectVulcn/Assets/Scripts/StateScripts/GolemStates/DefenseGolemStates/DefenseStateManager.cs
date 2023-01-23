@@ -24,7 +24,7 @@ public class DefenseStateManager : MonoBehaviour
     void Start()
     {
         currentState = wanderState;
-        defenseLocation = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z - 1f);
+        defenseLocation = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
         defenseRotation = Quaternion.identity;
     }
 
@@ -63,7 +63,7 @@ public class DefenseStateManager : MonoBehaviour
                 {
                     wanderState.newGolemX += 10.0f;
                 }
-                yield return new WaitForSeconds(2);
+                yield return new WaitForSeconds(0.5f);
                 wanderState.moveSpeed = 1.5f;
             }
         }
