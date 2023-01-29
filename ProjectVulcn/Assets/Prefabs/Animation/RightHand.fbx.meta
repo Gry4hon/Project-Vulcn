@@ -1,20 +1,20 @@
 fileFormatVersion: 2
-guid: 7af1226621c59d244b1fedfcfe79db09
+guid: 15a3b2939d10e324c870a62302ae47ce
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: 6081111169894267771
-    second: RightHand.001|Grip
+      74: 4919676686452954341
+    second: RightHand|Grip
   - first:
-      74: 7772531838236374965
-    second: RightHand.001|Grip.001
+      74: 1291976049489552192
+    second: RightHand|Grip.001
   - first:
-      74: -4489787716240831893
-    second: RightHand.001|Point
+      74: -6247170265223599541
+    second: RightHand|Point
   - first:
-      74: 4889936005617580392
-    second: RightHand.001|Point.001
+      74: 7192875033138494294
+    second: RightHand|Point.001
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -106,7 +106,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 
