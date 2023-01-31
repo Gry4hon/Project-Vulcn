@@ -1,11 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
-
-public class Hand : MonoBehaviour
+public class LeftHand : MonoBehaviour
 {
     public float animateSpeed;
 
@@ -42,13 +39,15 @@ public class Hand : MonoBehaviour
 
     private void AnimateHand()
     {
-        if(currentGripVal != gripTarget)
+        if (currentGripVal != gripTarget)
         {
+            Debug.Log("made it to grip left");
             currentGripVal = Mathf.MoveTowards(currentGripVal, gripTarget, Time.deltaTime * animateSpeed);
             theHandAnimator.SetFloat("Grip", currentGripVal);
-        }      
-        if(currentTriggerVal != triggerTarget)
+        }
+        if (currentTriggerVal != triggerTarget)
         {
+            Debug.Log("made it to trigger left");
             currentTriggerVal = Mathf.MoveTowards(currentTriggerVal, triggerTarget, Time.deltaTime * animateSpeed);
             theHandAnimator.SetFloat("Trigger", currentTriggerVal);
         }

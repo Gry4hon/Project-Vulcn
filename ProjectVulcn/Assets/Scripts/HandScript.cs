@@ -6,6 +6,12 @@ using UnityEngine.XR;
 public class HandScript : MonoBehaviour
 {
     private InputDevice theTargetDevice;
+    private InputDevice theSecondaryDevice;
+
+    public Animator rightAnimator;
+    public Animation rightGrip;
+
+   
 
     [Header("Public GameObjects")]
     public GameObject gauntletCanvas;
@@ -15,13 +21,11 @@ public class HandScript : MonoBehaviour
     void Start()
     {
         List<InputDevice> vrControllers = new List<InputDevice>();
-        InputDeviceCharacteristics rightControllerChar = InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
-        InputDevices.GetDevicesWithCharacteristics(rightControllerChar, vrControllers);
+       
+        InputDevices.GetDevices(vrControllers);
 
-        if(vrControllers.Count > 0)
-        {
-            theTargetDevice = vrControllers[0];
-        }
+        theTargetDevice = vrControllers[2];
+        theSecondaryDevice= vrControllers[1];
     }
 
 
@@ -41,5 +45,19 @@ public class HandScript : MonoBehaviour
             gauntletCanvas.SetActive(false);
             UISelector.SetActive(false);
         }
+
+        theTargetDevice.TryGetFeatureValue(CommonUsages.trigger, out float rightTriggerVal);
+        theTargetDevice.TryGetFeatureValue(CommonUsages.grip, out float rightGripVal);
+
+        theSecondaryDevice.TryGetFeatureValue(CommonUsages.trigger, out float leftTriggerVal);
+        theSecondaryDevice.TryGetFeatureValue(CommonUsages.grip, out float leftGripVal);
+
+        
+        rightAnimator.SetFloat("Grip", rightGripVal);   
+        rightAnimator.SetFloat("Trigger", rightTriggerVal);   
+
+
+
+
     }
 }

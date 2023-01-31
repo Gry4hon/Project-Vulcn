@@ -9,18 +9,19 @@ public class HandAnimatorControlleer : MonoBehaviour
 {
 
     ActionBasedController vrController;
+    
     public Hand theHand;
 
 
     void Start()
     {
         vrController= GetComponent<ActionBasedController>();
+        theHand= GetComponent<Hand>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        theHand.SetGrip(vrController.selectAction.action.ReadValue<float>()); 
-        theHand.SetTrigger(vrController.activateAction.action.ReadValue<float>());
+
     }
 }
