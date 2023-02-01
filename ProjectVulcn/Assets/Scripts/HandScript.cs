@@ -6,10 +6,10 @@ using UnityEngine.XR;
 public class HandScript : MonoBehaviour
 {
     private InputDevice theTargetDevice;
-    private InputDevice theSecondaryDevice;
+
 
     public Animator rightAnimator;
-    public Animation rightGrip;
+
 
    
 
@@ -25,7 +25,6 @@ public class HandScript : MonoBehaviour
         InputDevices.GetDevices(vrControllers);
 
         theTargetDevice = vrControllers[2];
-        theSecondaryDevice= vrControllers[1];
     }
 
 
@@ -49,8 +48,6 @@ public class HandScript : MonoBehaviour
         theTargetDevice.TryGetFeatureValue(CommonUsages.trigger, out float rightTriggerVal);
         theTargetDevice.TryGetFeatureValue(CommonUsages.grip, out float rightGripVal);
 
-        theSecondaryDevice.TryGetFeatureValue(CommonUsages.trigger, out float leftTriggerVal);
-        theSecondaryDevice.TryGetFeatureValue(CommonUsages.grip, out float leftGripVal);
 
         
         rightAnimator.SetFloat("Grip", rightGripVal);   
