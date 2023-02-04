@@ -10,9 +10,6 @@ public class HandScript : MonoBehaviour
 
     public Animator rightAnimator;
 
-
-   
-
     [Header("Public GameObjects")]
     public GameObject gauntletCanvas;
     public GameObject animatePoint;
