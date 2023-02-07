@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Scripting;
 using UnityEngine;
 
 public class AnimatePoint : MonoBehaviour
@@ -7,15 +8,17 @@ public class AnimatePoint : MonoBehaviour
     //This variable is assigned when a piece is socketed
     public GameObject thePile;
 
+
     public GameObject gauntletCanvas;
 
-    IsSocketed theHead;
+
+   CheckPile checkPile;
     ScrapScript destroyScrap;
 
     CanvasManager golemMode;
 
-   bool isSocketed;
-   bool defenseMode = false;
+    public bool isSocketed;
+    bool defenseMode = false;
     bool repairMode = false;
 
     private void Start()
@@ -24,40 +27,51 @@ public class AnimatePoint : MonoBehaviour
     }
 
 
-    public void UpdatePile()
-    {
-        theHead = thePile.gameObject.GetComponentInChildren<IsSocketed>();
-        isSocketed = theHead.pieceSocketed;
-    }
 
     private void OnTriggerEnter(Collider other)
     {
-        destroyScrap = thePile.GetComponent<ScrapScript>();
-
         repairMode = golemMode.repairModeSet;
         defenseMode = golemMode.defenseModeSet;
 
         if (repairMode)
         {
-            if (isSocketed && other.tag == ("Chip"))
+            if(thePile != null)
             {
-                print("Repair golem is created");
-                Destroy(other.gameObject);
-                destroyScrap.SpawnRGolem();
-                isSocketed = false;
+                if (isSocketed && other.tag == "ScrapPiece")
+                {
+                    checkPile = other.GetComponent<CheckPile>();
+                    if (checkPile.scrapPile.name == thePile.name)
+                    {
+                        destroyScrap = thePile.GetComponent<ScrapScript>();
+                        Debug.Log("Repair golem is created");
+                        Destroy(other.gameObject);
+                        destroyScrap.SpawnRGolem();
+                        isSocketed = false;
+                    }
+                }
             }
+           
         }
 
         if (defenseMode)
         {
-
-            if (isSocketed && other.tag == ("Chip"))
+            if (thePile != null)
             {
-                print("Defense golem is created");
-                Destroy(other.gameObject);
-                destroyScrap.SpawnDGolem();
-                isSocketed = false;
+                if (isSocketed && other.tag == "ScrapPiece")
+                {
+                    checkPile = other.GetComponent<CheckPile>();
+                    if (checkPile.scrapPile.name == thePile.name)
+                    {
+                        destroyScrap = thePile.GetComponent<ScrapScript>();
+                        print("Defense golem is created");
+                        Destroy(other.gameObject);
+                        destroyScrap.SpawnDGolem();
+                        isSocketed = false;
+                    }
+                }
             }
+
+           
         }
 
     }

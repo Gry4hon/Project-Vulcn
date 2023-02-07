@@ -12,7 +12,6 @@ public class HandScript : MonoBehaviour
 
     [Header("Public GameObjects")]
     public GameObject gauntletCanvas;
-    public GameObject animatePoint;
     public GameObject UISelector;
 
     void Start()
@@ -32,12 +31,10 @@ public class HandScript : MonoBehaviour
         if (theAbutton)
         {
             gauntletCanvas.SetActive(true);
-            animatePoint.SetActive(true);
             UISelector.SetActive(true);
         }
         else
         {
-            animatePoint.SetActive(false);
             gauntletCanvas.SetActive(false);
             UISelector.SetActive(false);
         }

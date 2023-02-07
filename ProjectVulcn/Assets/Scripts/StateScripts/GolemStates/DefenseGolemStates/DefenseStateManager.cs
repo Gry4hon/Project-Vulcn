@@ -42,12 +42,6 @@ public class DefenseStateManager : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.tag == "Scrap")
-        {
-            print("owie");
-        }
-
-
 
         if(collision.collider.tag == "Ship")
         {

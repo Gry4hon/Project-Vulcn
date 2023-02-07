@@ -12,6 +12,7 @@ TagManager:
   - Ground
   - ThePlayer
   - Enemy
+  - ScrapPiece
   layers:
   - Default
   - TransparentFX
