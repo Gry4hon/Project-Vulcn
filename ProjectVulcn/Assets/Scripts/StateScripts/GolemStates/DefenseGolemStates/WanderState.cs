@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class WanderState : DefenseStateSetter
 {
@@ -22,16 +23,19 @@ public class WanderState : DefenseStateSetter
     public float newGolemZ = 0f;
 
     Vector3 newPosition;
+    NavMeshAgent golemAgent;
 
     public float moveSpeed = 1.5f;
 
 
     public override void EnterState(DefenseStateManager state)
     {
+
     }
 
     public override void RunCurrentState(DefenseStateManager state)
     {
+        golemAgent = state.defenseAgent;
         if (waitTime > 0)
         {
             waitTime -= Time.deltaTime;
@@ -55,8 +59,7 @@ public class WanderState : DefenseStateSetter
         if(newGolemX != 0 && newGolemZ != 0)
         {
             newPosition = new Vector3(newGolemX, state.defenseGolem.transform.position.y, newGolemZ);
-            state.defenseGolem.transform.position = Vector3.MoveTowards(state.defenseGolem.transform.position, newPosition, moveSpeed * Time.deltaTime);
-            state.defenseGolem.transform.LookAt(newPosition);
+            golemAgent.destination= newPosition;
         }
 
         if (state.defenseGolem.transform.position == newPosition)

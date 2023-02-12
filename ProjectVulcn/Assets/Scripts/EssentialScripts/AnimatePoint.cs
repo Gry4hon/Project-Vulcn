@@ -35,19 +35,18 @@ public class AnimatePoint : MonoBehaviour
 
         if (repairMode)
         {
-            if(thePile != null)
+            checkPile = other.GetComponent<CheckPile>();
+            thePile = checkPile.scrapPile;
+            if (thePile != null)
             {
                 if (isSocketed && other.tag == "ScrapPiece")
                 {
-                    checkPile = other.GetComponent<CheckPile>();
-                    if (checkPile.scrapPile.name == thePile.name)
-                    {
                         destroyScrap = thePile.GetComponent<ScrapScript>();
                         Debug.Log("Repair golem is created");
                         Destroy(other.gameObject);
                         destroyScrap.SpawnRGolem();
                         isSocketed = false;
-                    }
+
                 }
             }
            

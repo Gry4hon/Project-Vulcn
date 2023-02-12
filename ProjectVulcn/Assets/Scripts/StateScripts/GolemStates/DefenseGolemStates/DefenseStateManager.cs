@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class DefenseStateManager : MonoBehaviour
 {
+    public GameObject movePoint;
+    public NavMeshAgent defenseAgent;
+
     public Vector3 defenseLocation;
     public Quaternion defenseRotation;
 
@@ -23,6 +26,7 @@ public class DefenseStateManager : MonoBehaviour
 
     void Start()
     {
+        defenseAgent = GetComponent<NavMeshAgent>();
         currentState = wanderState;
         defenseLocation = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
         defenseRotation = Quaternion.identity;
@@ -31,6 +35,7 @@ public class DefenseStateManager : MonoBehaviour
     void Update()
     {
         currentState.RunCurrentState(this);
+
     }
 
     public void SwitchState(DefenseStateSetter nextState)
@@ -39,29 +44,7 @@ public class DefenseStateManager : MonoBehaviour
         currentState.EnterState(this);
     }
 
-
-    private void OnCollisionEnter(Collision collision)
-    {
-
-        if(collision.collider.tag == "Ship")
-        {
-            wanderState.moveSpeed = 0.0f;
-            StartCoroutine(rotateTimer());
-            IEnumerator rotateTimer()
-            {
-                if(wanderState.newGolemX > 0.0f)
-                {
-                    wanderState.newGolemX -= 10.0f;
-                }
-                if(wanderState.newGolemX < 0.0f)
-                {
-                    wanderState.newGolemX += 10.0f;
-                }
-                yield return new WaitForSeconds(0.5f);
-                wanderState.moveSpeed = 1.5f;
-            }
-        }
-    }
+   
 
     private void OnTriggerEnter(Collider other)
     {

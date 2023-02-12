@@ -282,6 +282,7 @@ GameObject:
   - component: {fileID: 2860020809478825902}
   - component: {fileID: 8880340643233491153}
   - component: {fileID: 6803444362180468197}
+  - component: {fileID: 3217871430719986357}
   m_Layer: 0
   m_Name: DefenseGolmn
   m_TagString: Untagged
@@ -379,6 +380,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 591eb502eff955c42bb1eef453ba8188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movePoint: {fileID: 0}
+  defenseAgent: {fileID: 0}
   defenseLocation: {x: 0, y: 0, z: 0}
   defenseRotation: {x: 0, y: 0, z: 0, w: 0}
   defenseGolem: {fileID: 6611208192334826067}
@@ -426,3 +429,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8677298, y: 1.1067522, z: 0.72077405}
   m_Center: {x: -0.0011560804, y: 0.07053632, z: 0.20754492}
+--- !u!195 &3217871430719986357
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6611208192334826067}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.50000006
+  m_Speed: 1.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2.0000002
+  m_BaseOffset: 0.7
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
