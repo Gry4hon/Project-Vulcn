@@ -23,6 +23,7 @@ public class DefenseStateManager : MonoBehaviour
 
     public List<GameObject> enemyList= new List<GameObject>();
 
+   
 
     void Start()
     {

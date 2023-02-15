@@ -9,14 +9,12 @@ public class CanvasManager : MonoBehaviour
 
     public void SetToDefenseMode()
     {
-        print("Set to Defensive Mode");
         defenseModeSet = true;
         repairModeSet = false;
     }
 
     public void SetToRepairMode()
     {
-        print("Set to Repair Mode");
         repairModeSet = true;
         defenseModeSet = false;
     }

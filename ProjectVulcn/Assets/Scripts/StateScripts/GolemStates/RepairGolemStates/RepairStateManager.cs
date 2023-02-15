@@ -2,15 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class RepairStateManager : MonoBehaviour
 {
-    public RepairStateSetter currentState;
+    RepairStateSetter currentState;
+
+    public GameObject theShip;
+    //public Vector3 shipLocation;
+
     public RepairToShip moveState = new RepairToShip();
     public RepairState repairState = new RepairState();
     public RepairDeath deathState = new RepairDeath();
 
     public GameObject theRepairGolem;
+
+    public NavMeshAgent repairAgent;
 
     public Image repairBar;
     public Image healthBar;
@@ -18,11 +25,12 @@ public class RepairStateManager : MonoBehaviour
 
     void Start()
     {
+        repairAgent = GetComponent<NavMeshAgent>();
+        theShip = GameObject.FindGameObjectWithTag("Ship");
         currentState = moveState;
-        
     }
 
-  
+
     void Update()
     {
         currentState.RunCurrentState(this);
@@ -34,9 +42,9 @@ public class RepairStateManager : MonoBehaviour
         currentState.EnterState(this);
     }
 
-    public void OnCollisionEnter(Collision collision)
+    public void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Ship")
+        if (other.tag == "Ship")
         {
             SwitchState(repairState);
         }
@@ -46,7 +54,4 @@ public class RepairStateManager : MonoBehaviour
     {
         Destroy(theRepairGolem);
     }
-
-
-    
 }

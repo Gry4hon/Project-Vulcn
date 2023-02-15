@@ -5,11 +5,7 @@ using UnityEngine.AI;
 
 public class WanderState : DefenseStateSetter
 {
-    /*What I want this script to do:
-     * 1. On enter, get the position of the defenseGolem
-     * 2. While running, have the transform change randomly as though it was wandering
-     * 2.5 Perhaps an array of different randomly assigned 
-     */
+
     float waitTime = 5.0f;
     float resetTime;
 
@@ -18,6 +14,9 @@ public class WanderState : DefenseStateSetter
 
     bool timerEnded = false;
     bool startWalkin = false;
+
+    bool resetPoints = false;
+    float pointTime = 10f;
 
     public float newGolemX = 0f;
     public float newGolemZ = 0f;
@@ -33,6 +32,8 @@ public class WanderState : DefenseStateSetter
 
     }
 
+
+
     public override void RunCurrentState(DefenseStateManager state)
     {
         golemAgent = state.defenseAgent;
@@ -47,24 +48,38 @@ public class WanderState : DefenseStateSetter
 
 
         if (timerEnded && !startWalkin) {
-             startWalkin = true;
-             resetTimerEnded= false;
-             resetTime = 2.0f;
-             newGolemX = RandomCoords(state.defenseLocation.x);
-             newGolemZ = RandomCoords(state.defenseLocation.z);
+            startWalkin = true;
+            resetTimerEnded = false;
+            resetPoints = true;
+            resetTime = 2.0f;
+            pointTime = 10f;
+            newGolemX = RandomCoords(state.defenseLocation.x);
+            newGolemZ = RandomCoords(state.defenseLocation.z);
         }
 
 
-
-        if(newGolemX != 0 && newGolemZ != 0)
+        if (newGolemX != 0 && newGolemZ != 0)
         {
-            newPosition = new Vector3(newGolemX, state.defenseGolem.transform.position.y, newGolemZ);
-            golemAgent.destination= newPosition;
+            if(pointTime > 0 && resetPoints)
+            {
+                pointTime -= Time.deltaTime;
+                newPosition = new Vector3(newGolemX, state.defenseGolem.transform.position.y, newGolemZ);
+                golemAgent.destination = newPosition;
+            }
+            else
+            {
+                newGolemX= 0;
+                newGolemZ= 0;
+                startWalkin= false;
+            }
+
         }
+
 
         if (state.defenseGolem.transform.position == newPosition)
         {
-            if(resetTime > 0)
+            resetPoints= false;
+            if (resetTime > 0)
             {
                 resetTime -= Time.deltaTime;
                 resetEnded = false;
@@ -91,5 +106,8 @@ public class WanderState : DefenseStateSetter
         randomNumber = Random.Range(-(randomNumber), randomNumber);
         return randomNumber;
     }
+
+    
+
 
 }
