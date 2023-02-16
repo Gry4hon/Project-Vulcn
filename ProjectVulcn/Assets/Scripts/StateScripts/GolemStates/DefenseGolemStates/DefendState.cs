@@ -11,7 +11,7 @@ public class DefendState : DefenseStateSetter
 
     public override void EnterState(DefenseStateManager state)
     {
-
+        state.targetFound= true;
     }
 
     public override void RunCurrentState(DefenseStateManager state)

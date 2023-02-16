@@ -15,10 +15,8 @@ public class KillState : ScrapWolfSetter
 
     public override void EnterState(ScrapWolfManager state)
     {
-        Debug.Log("KILLL KILLL KILLLLLLLLLLLLLLLLLLLLLLLLLLLL");
         wolfAgent = state.scrapWolfAgent;
         theWolf = state.scrapWolf;
-        wolfAgent.destination = theWolf.transform.position;
 
         theTarget = state.defenseGolemTarget;
         defenseState = theTarget.GetComponent<DefenseStateManager>();
@@ -38,7 +36,9 @@ public class KillState : ScrapWolfSetter
 
     public override void RunCurrentState(ScrapWolfManager state)
     {
-        if(defenseState.golemHealth <= 0) 
+        wolfAgent.destination = theWolf.transform.position;
+
+        if (defenseState.golemHealth <= 0) 
         {
             isKilling = false;
             state.StopCoroutine(KillGolem());

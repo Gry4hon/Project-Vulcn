@@ -31,6 +31,9 @@ public class WanderState : DefenseStateSetter
     public override void EnterState(DefenseStateManager state)
     {
         state.searchingHitBox.enabled= true;
+        state.searchingHitBox.isTrigger = true;
+        state.searchingForTarget = true;
+        Debug.Log("Made it back to wander state");
     }
 
     public override void RunCurrentState(DefenseStateManager state)
@@ -53,8 +56,8 @@ public class WanderState : DefenseStateSetter
             resetPoints = true;
             resetTime = 2.0f;
             pointTime = 10f;
-            newGolemX = RandomCoords(state.defenseLocation.x);
-            newGolemZ = RandomCoords(state.defenseLocation.z);
+            newGolemX = RandomCoords(state.defenseGolem.transform.position.x);
+            newGolemZ = RandomCoords(state.defenseGolem.transform.position.z);
         }
 
 

@@ -17,11 +17,10 @@ public class DefenseStateManager : MonoBehaviour
     public BoxCollider searchingHitBox;
     public NavMeshAgent defenseAgent;
 
-    public Vector3 defenseLocation;
-    public Quaternion defenseRotation;
-
     public float golemHealth = 100f;
     public Image golemHealthBar;
+    public bool targetFound = false;
+    public bool searchingForTarget = true;
 
     [Header("Targets")]
     public GameObject movePoint;
@@ -32,8 +31,6 @@ public class DefenseStateManager : MonoBehaviour
     {
         defenseAgent = GetComponent<NavMeshAgent>();
         currentState = wanderState;
-        defenseLocation = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
-        defenseRotation = Quaternion.identity;
     }
 
     void Update()
@@ -50,21 +47,37 @@ public class DefenseStateManager : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.tag == "Enemy")
+        if (targetFound)
         {
-            SwitchState(attackState);
+            print("Target locked");
+            if (collision.collider.tag == "Enemy")
+            {
+                print("Attacking target");
+                targetFound = false;
+                SwitchState(attackState);
+            }
         }
+
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Enemy")
+        if (searchingForTarget)
         {
-           scrapWolfTarget =  other.gameObject;
-            searchingHitBox.enabled= false;
-            SwitchState(defendState);
+            print("Searching for target");
+            if (other.tag == "Enemy")
+            {
+                targetFound = true;
+                searchingForTarget = false;
+                scrapWolfTarget = other.gameObject;
+                searchingHitBox.enabled = false;
+                searchingHitBox.isTrigger = false;
+                SwitchState(defendState);
+
+            }
         }
+
     }
 
 
