@@ -6,7 +6,7 @@ public class DefenseDeath : DefenseStateSetter
 {
     public override void EnterState(DefenseStateManager state)
     {
-
+        Object.Destroy(state.defenseGolem);
     }
 
     public override void RunCurrentState(DefenseStateManager state)

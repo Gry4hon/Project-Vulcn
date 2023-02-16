@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class DefendState : DefenseStateSetter
 {
     GameObject theTarget;
-    Vector3 targetLocation;
+    NavMeshAgent golemAgent;
+
+
     public override void EnterState(DefenseStateManager state)
     {
 
@@ -13,15 +16,11 @@ public class DefendState : DefenseStateSetter
 
     public override void RunCurrentState(DefenseStateManager state)
     {
-        theTarget = state.enemyList[0];
+        theTarget = state.scrapWolfTarget;
+        golemAgent = state.defenseAgent;
+        golemAgent.speed = 2f;
 
-        targetLocation = new Vector3(theTarget.transform.position.x - 0.5f, state.defenseGolem.transform.position.y, theTarget.transform.position.z);
+        golemAgent.destination = theTarget.transform.position;
 
-        state.defenseGolem.transform.position = Vector3.MoveTowards(state.defenseGolem.transform.position, targetLocation, 2f * Time.deltaTime);
-
-        if(state.defenseGolem.transform.position == targetLocation)
-        {
-            state.SwitchState(state.attackState);
-        }
     }
 }

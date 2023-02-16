@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeathState : ScrapWolfSetter
+public class killShipState : ScrapWolfSetter
 {
     public override void EnterState(ScrapWolfManager state)
     {
-        Object.Destroy(state.scrapWolf);
+        Debug.Log("KILL SHIP KILL SHIIIPPPPPP");
     }
 
     public override void RunCurrentState(ScrapWolfManager state)
@@ -14,3 +14,4 @@ public class DeathState : ScrapWolfSetter
 
     }
 }
+

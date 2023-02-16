@@ -284,7 +284,7 @@ GameObject:
   - component: {fileID: 3217871430719986357}
   m_Layer: 0
   m_Name: DefenseGolmn
-  m_TagString: Untagged
+  m_TagString: Defense
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -364,10 +364,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.7187856
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: -0.0102396}
 --- !u!114 &3838366532958479613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,12 +380,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 591eb502eff955c42bb1eef453ba8188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePoint: {fileID: 0}
+  defenseGolem: {fileID: 6611208192334826067}
+  searchingHitBox: {fileID: 8880340643233491153}
   defenseAgent: {fileID: 0}
   defenseLocation: {x: 0, y: 0, z: 0}
   defenseRotation: {x: 0, y: 0, z: 0, w: 0}
-  defenseGolem: {fileID: 6611208192334826067}
-  directionPick: 0
+  golemHealth: 100
+  golemHealthBar: {fileID: 1344186390300885369}
+  movePoint: {fileID: 0}
   enemyList: []
 --- !u!54 &2860020809478825902
 Rigidbody:
@@ -395,7 +397,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6611208192334826067}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 20
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -435,7 +437,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2.0000002
-  m_BaseOffset: 0.7
+  m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!1 &7225131375127719315
@@ -449,10 +451,9 @@ GameObject:
   - component: {fileID: 641405323477425140}
   - component: {fileID: 898804505917566214}
   - component: {fileID: 2031898334341221772}
-  - component: {fileID: 4840932996800193303}
   m_Layer: 0
-  m_Name: Capsule
-  m_TagString: Untagged
+  m_Name: Eyes
+  m_TagString: InRange
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -520,17 +521,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &4840932996800193303
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7225131375127719315}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2.0000005
-  m_Direction: 1
-  m_Center: {x: -9.313227e-10, y: -0.000000014901163, z: 0.0000000074505815}

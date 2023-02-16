@@ -23,20 +23,20 @@ public class WanderState : DefenseStateSetter
 
     Vector3 newPosition;
     NavMeshAgent golemAgent;
+   
 
     public float moveSpeed = 1.5f;
 
 
     public override void EnterState(DefenseStateManager state)
     {
-
+        state.searchingHitBox.enabled= true;
     }
-
-
 
     public override void RunCurrentState(DefenseStateManager state)
     {
         golemAgent = state.defenseAgent;
+        golemAgent.speed = 0.7f;
         if (waitTime > 0)
         {
             waitTime -= Time.deltaTime;

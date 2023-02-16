@@ -1,29 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
 
 public class DefenseStateManager : MonoBehaviour
 {
-    public GameObject movePoint;
-    public NavMeshAgent defenseAgent;
-
-    public Vector3 defenseLocation;
-    public Quaternion defenseRotation;
-
    DefenseStateSetter currentState;
    public WanderState wanderState = new WanderState();
    public DefendState defendState = new DefendState();
    public DefenceAttackState attackState = new DefenceAttackState();
    public DefenseDeath defenseDeath = new DefenseDeath();
 
+    [Header("TheGolem")]
     public GameObject defenseGolem;
+    public BoxCollider searchingHitBox;
+    public NavMeshAgent defenseAgent;
 
-    public int directionPick = 0;
+    public Vector3 defenseLocation;
+    public Quaternion defenseRotation;
 
-    public List<GameObject> enemyList= new List<GameObject>();
+    public float golemHealth = 100f;
+    public Image golemHealthBar;
 
-   
+    [Header("Targets")]
+    public GameObject movePoint;
+    public GameObject scrapWolfTarget;
+
 
     void Start()
     {
@@ -36,7 +39,6 @@ public class DefenseStateManager : MonoBehaviour
     void Update()
     {
         currentState.RunCurrentState(this);
-
     }
 
     public void SwitchState(DefenseStateSetter nextState)
@@ -45,16 +47,26 @@ public class DefenseStateManager : MonoBehaviour
         currentState.EnterState(this);
     }
 
-   
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.tag == "Enemy")
+        {
+            SwitchState(attackState);
+        }
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Enemy")
         {
-           enemyList.Add(other.gameObject);
+           scrapWolfTarget =  other.gameObject;
+            searchingHitBox.enabled= false;
             SwitchState(defendState);
         }
     }
+
 
 
 
