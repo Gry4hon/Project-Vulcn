@@ -11,7 +11,6 @@ public class ScrapWolfManager : MonoBehaviour
     public HuntState huntState = new HuntState();
     public KillState killState = new KillState();
     public killShipState killShipState = new killShipState();
-    public DeathState deathState = new DeathState();
 
     [Header("The Wolf")]
     public GameObject scrapWolf;
@@ -20,22 +19,32 @@ public class ScrapWolfManager : MonoBehaviour
     public float wolfHealth = 100f;
     public Image wolfHealthBar;
 
+    public bool targetFound = false;
+    public bool searchingForTarget = true;
+    public bool firstBlood = false;
+
     [Header("Targets")]
     public GameObject shipToDestroy;
-    public GameObject defenseGolemTarget;
+    public List<GameObject> defenseGolemTargets = new List<GameObject>();
+
 
     void Start()
     {
         scrapWolf = this.gameObject;
+        scrapWolfAgent = GetComponent<NavMeshAgent>();
+        shipToDestroy = GameObject.FindGameObjectWithTag("WeakSpot");
         currentState = prowlingState;
     }
 
     void Update()
     {
-        shipToDestroy = GameObject.FindGameObjectWithTag("WeakSpot");
-        scrapWolfAgent = GetComponent<NavMeshAgent>();
 
         currentState.RunCurrentState(this);
+
+        if(wolfHealth <= 0)
+        {
+            GameObject.Destroy(scrapWolf);
+        }
     }
 
     public void SwitchState(ScrapWolfSetter nextState)
@@ -44,16 +53,30 @@ public class ScrapWolfManager : MonoBehaviour
         currentState.EnterState(this);
     }
 
-
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.collider.gameObject == huntState.golemToKill && targetFound)
+        {
+            SwitchState(killState);
+            targetFound = false;
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Defense")
+        if(searchingForTarget)
         {
-            defenseGolemTarget = other.gameObject;
-            searchingHitBox.enabled = false;
-            SwitchState(huntState);
+            if (other.tag == "Defense")
+            {
+                searchingForTarget = false;
+                targetFound = true;
+                searchingHitBox.enabled = false;
+                searchingHitBox.isTrigger = false;
+                defenseGolemTargets.Add(other.gameObject);
+                SwitchState(huntState);
+            }
         }
+
 
         if(other.tag == "WeakSpot")
         {
@@ -61,12 +84,5 @@ public class ScrapWolfManager : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.collider.tag == "Defense")
-        {
-            SwitchState(killState);
-        }
-    }
 
 }

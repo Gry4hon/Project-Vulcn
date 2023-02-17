@@ -16,19 +16,22 @@ public class DefenseStateManager : MonoBehaviour
     public GameObject defenseGolem;
     public BoxCollider searchingHitBox;
     public NavMeshAgent defenseAgent;
-
     public float golemHealth = 100f;
     public Image golemHealthBar;
+
     public bool targetFound = false;
     public bool searchingForTarget = true;
+    public bool firstBlood = false;
+
 
     [Header("Targets")]
     public GameObject movePoint;
-    public GameObject scrapWolfTarget;
+    public List<GameObject> scrapWolfTargets = new List<GameObject>();
 
 
     void Start()
     {
+        defenseGolem = this.gameObject;
         defenseAgent = GetComponent<NavMeshAgent>();
         currentState = wanderState;
     }
@@ -36,46 +39,47 @@ public class DefenseStateManager : MonoBehaviour
     void Update()
     {
         currentState.RunCurrentState(this);
+
+        if (golemHealth <= 0)
+        {
+            GameObject.Destroy(defenseGolem);
+        }
     }
 
     public void SwitchState(DefenseStateSetter nextState)
     {
         currentState = nextState;
         currentState.EnterState(this);
+
+
+
     }
 
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-        if (targetFound)
+        if(collision.collider.gameObject == defendState.theTarget && targetFound)
         {
-            print("Target locked");
-            if (collision.collider.tag == "Enemy")
-            {
-                print("Attacking target");
-                targetFound = false;
-                SwitchState(attackState);
-            }
+            SwitchState(attackState);
+            targetFound = false;
         }
-
     }
-
 
     private void OnTriggerEnter(Collider other)
     {
         if (searchingForTarget)
         {
-            print("Searching for target");
             if (other.tag == "Enemy")
             {
-                targetFound = true;
                 searchingForTarget = false;
-                scrapWolfTarget = other.gameObject;
+                targetFound= true;
                 searchingHitBox.enabled = false;
                 searchingHitBox.isTrigger = false;
+                scrapWolfTargets.Add(other.gameObject);
                 SwitchState(defendState);
 
             }
+        }
+
         }
 
     }
@@ -84,4 +88,4 @@ public class DefenseStateManager : MonoBehaviour
 
 
 
-}
+

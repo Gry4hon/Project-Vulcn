@@ -9,8 +9,11 @@ public class ProwlState : ScrapWolfSetter
 
     public override void EnterState(ScrapWolfManager state)
     {
-        state.searchingHitBox.enabled = true; 
-      
+        state.searchingHitBox.enabled = true;
+        state.searchingHitBox.isTrigger = true;
+        state.searchingForTarget = true;
+
+        state.defenseGolemTargets.Clear();
     }
 
     public override void RunCurrentState(ScrapWolfManager state)

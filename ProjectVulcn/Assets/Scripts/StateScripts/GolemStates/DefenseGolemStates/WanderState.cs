@@ -33,13 +33,17 @@ public class WanderState : DefenseStateSetter
         state.searchingHitBox.enabled= true;
         state.searchingHitBox.isTrigger = true;
         state.searchingForTarget = true;
-        Debug.Log("Made it back to wander state");
+
+
+       state.scrapWolfTargets.Clear();
+        
     }
 
     public override void RunCurrentState(DefenseStateManager state)
     {
         golemAgent = state.defenseAgent;
         golemAgent.speed = 0.7f;
+
         if (waitTime > 0)
         {
             waitTime -= Time.deltaTime;
@@ -48,7 +52,6 @@ public class WanderState : DefenseStateSetter
         {
             timerEnded = true;
         }
-
 
         if (timerEnded && !startWalkin) {
             startWalkin = true;

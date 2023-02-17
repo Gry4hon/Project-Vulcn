@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class HuntState : ScrapWolfSetter
 {
     NavMeshAgent wolfAgent;
-    GameObject golemToKill;
+    public GameObject golemToKill;
 
 
     public override void EnterState(ScrapWolfManager state)
@@ -18,7 +18,16 @@ public class HuntState : ScrapWolfSetter
     {
             wolfAgent = state.scrapWolfAgent;
             wolfAgent.speed = 4f;
-            golemToKill = state.defenseGolemTarget;
+            golemToKill = state.defenseGolemTargets[0];
+
+
+        if(golemToKill!= null ) 
+        {
             wolfAgent.destination = golemToKill.transform.position;
+        }
+        else
+        {
+            state.SwitchState(state.prowlingState);
+        }
     }
 }

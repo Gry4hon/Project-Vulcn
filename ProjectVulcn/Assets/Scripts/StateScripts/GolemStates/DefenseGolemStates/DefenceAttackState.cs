@@ -7,27 +7,24 @@ public class DefenceAttackState : DefenseStateSetter
 {
     NavMeshAgent golemAgent;
     GameObject theGolem;
-    Rigidbody golemRigidBody;
+
 
     GameObject theTarget;
     ScrapWolfManager scrapWolfManager;
 
     bool isAttacking;
+    bool noTarget = false;
 
     public override void EnterState(DefenseStateManager state)
     {
-        Debug.Log("Made it to Attack State");
         golemAgent = state.defenseAgent;
         theGolem = state.defenseGolem;
 
 
-        theTarget = state.scrapWolfTarget;
+        theTarget = state.scrapWolfTargets[0];
         scrapWolfManager = theTarget.GetComponent<ScrapWolfManager>();
 
-        golemRigidBody = theGolem.GetComponent<Rigidbody>();
 
-        golemAgent.destination = theGolem.transform.position;
-        golemRigidBody.constraints = RigidbodyConstraints.FreezePosition;
 
         isAttacking = true;
         state.StartCoroutine(DoDamage());
@@ -36,12 +33,20 @@ public class DefenceAttackState : DefenseStateSetter
 
     private IEnumerator DoDamage()
     {
-        while (isAttacking)
+        if(theTarget!= null)
         {
-            yield return new WaitForSeconds(5);
-            scrapWolfManager.wolfHealth -= 10f;
-            scrapWolfManager.wolfHealthBar.fillAmount = scrapWolfManager.wolfHealth / 100f;
+            while (isAttacking)
+            {
+                yield return new WaitForSeconds(2);
+                scrapWolfManager.wolfHealth -= 10f;
+                scrapWolfManager.wolfHealthBar.fillAmount = scrapWolfManager.wolfHealth / 100f;
+            }
         }
+        else
+        {
+            noTarget= true;
+        }
+
     }
 
     public override void RunCurrentState(DefenseStateManager state)
@@ -50,6 +55,7 @@ public class DefenceAttackState : DefenseStateSetter
         if (scrapWolfManager.wolfHealth <= 0)
         {
             isAttacking= false;
+            state.firstBlood= true;
             state.StopCoroutine(DoDamage());
             state.SwitchState(state.wanderState);
         }
@@ -58,8 +64,15 @@ public class DefenceAttackState : DefenseStateSetter
         {
             isAttacking= false;
             state.StopCoroutine(DoDamage());
-            state.SwitchState(state.defenseDeath);
         }
+
+        if (noTarget)
+        {
+            isAttacking = false;
+            state.StopCoroutine(DoDamage());
+            state.SwitchState(state.wanderState);
+        }
+
 
     }
 }

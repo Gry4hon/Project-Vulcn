@@ -12,26 +12,36 @@ public class KillState : ScrapWolfSetter
     DefenseStateManager defenseState;
 
     bool isKilling;
+    bool noTarget = false;
 
     public override void EnterState(ScrapWolfManager state)
     {
         wolfAgent = state.scrapWolfAgent;
         theWolf = state.scrapWolf;
 
-        theTarget = state.defenseGolemTarget;
+        theTarget = state.defenseGolemTargets[0];
         defenseState = theTarget.GetComponent<DefenseStateManager>();
+
         isKilling= true;
         state.StartCoroutine(KillGolem());
     }
 
     private IEnumerator KillGolem()
     {
-        while (isKilling)
+        if(theTarget != null)
         {
-            yield return new WaitForSeconds(3);
-            defenseState.golemHealth -= 2f;
-            defenseState.golemHealthBar.fillAmount = defenseState.golemHealth / 100f;
+            while (isKilling)
+            {
+                yield return new WaitForSeconds(4);
+                defenseState.golemHealth -= 2f;
+                defenseState.golemHealthBar.fillAmount = defenseState.golemHealth / 100f;
+            }
         }
+        else
+        {
+            noTarget= true;
+        }
+
     }
 
     public override void RunCurrentState(ScrapWolfManager state)
@@ -41,15 +51,17 @@ public class KillState : ScrapWolfSetter
         if (defenseState.golemHealth <= 0) 
         {
             isKilling = false;
+            state.firstBlood= true;
             state.StopCoroutine(KillGolem());
             state.SwitchState(state.prowlingState);
         }
 
-        if(state.wolfHealth <= 0)
+        if (noTarget)
         {
             isKilling = false;
             state.StopCoroutine(KillGolem());
-            state.SwitchState(state.deathState);
+            state.SwitchState(state.prowlingState);
         }
+
     }
 }
