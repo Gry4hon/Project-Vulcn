@@ -11,6 +11,9 @@ public class RepairStateManager : MonoBehaviour
     public GameObject theShip;
     //public Vector3 shipLocation;
 
+    GameObject theGameMaster;
+    public GameMaster gameMaster;
+
     public RepairToShip moveState = new RepairToShip();
     public RepairState repairState = new RepairState();
     public RepairDeath deathState = new RepairDeath();
@@ -28,6 +31,9 @@ public class RepairStateManager : MonoBehaviour
         repairAgent = GetComponent<NavMeshAgent>();
         theShip = GameObject.FindGameObjectWithTag("Ship");
         currentState = moveState;
+
+        theGameMaster = GameObject.FindGameObjectWithTag("GameMaster");
+        gameMaster = theGameMaster.GetComponent<GameMaster>();
     }
 
 

@@ -16,6 +16,7 @@ TagManager:
   - WeakSpot
   - Defense
   - InRange
+  - GameMaster
   layers:
   - Default
   - TransparentFX

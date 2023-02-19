@@ -25,7 +25,6 @@ public class DefenceAttackState : DefenseStateSetter
         scrapWolfManager = theTarget.GetComponent<ScrapWolfManager>();
 
 
-
         isAttacking = true;
         state.StartCoroutine(DoDamage());
     }
@@ -51,6 +50,8 @@ public class DefenceAttackState : DefenseStateSetter
 
     public override void RunCurrentState(DefenseStateManager state)
     {
+
+        golemAgent.destination = theTarget.transform.position;
 
         if (scrapWolfManager.wolfHealth <= 0)
         {

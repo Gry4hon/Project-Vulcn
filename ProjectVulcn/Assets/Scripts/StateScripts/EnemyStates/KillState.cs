@@ -19,10 +19,14 @@ public class KillState : ScrapWolfSetter
         wolfAgent = state.scrapWolfAgent;
         theWolf = state.scrapWolf;
 
+
+
         theTarget = state.defenseGolemTargets[0];
         defenseState = theTarget.GetComponent<DefenseStateManager>();
 
-        isKilling= true;
+
+
+        isKilling = true;
         state.StartCoroutine(KillGolem());
     }
 
@@ -46,7 +50,7 @@ public class KillState : ScrapWolfSetter
 
     public override void RunCurrentState(ScrapWolfManager state)
     {
-        wolfAgent.destination = theWolf.transform.position;
+        wolfAgent.destination = theTarget.transform.position;
 
         if (defenseState.golemHealth <= 0) 
         {

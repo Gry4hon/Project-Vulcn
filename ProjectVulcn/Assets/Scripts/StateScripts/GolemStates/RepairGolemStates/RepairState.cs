@@ -30,6 +30,7 @@ public class RepairState : RepairStateSetter
             {
                 repairTimer = 2f;
                 repairBar.fillAmount += 0.1f;
+                state.gameMaster.RepairShip();
             }
         }
        

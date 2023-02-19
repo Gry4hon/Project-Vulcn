@@ -19,7 +19,7 @@ public class ProwlState : ScrapWolfSetter
     public override void RunCurrentState(ScrapWolfManager state)
     {
         wolfAgent = state.scrapWolfAgent;
-        wolfAgent.speed = 3.5f;
+        wolfAgent.speed = 2.1f;
         wolfAgent.destination = state.shipToDestroy.transform.position;
     }
 }

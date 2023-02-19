@@ -1,10 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameMaster : MonoBehaviour
 {
     [SerializeField] private Material skyBox;
+    private float shipHealthValue = 99f;
+
+    [Header("Essential GameObjects")]
+    public Image shipHealth;
+
+    bool gameOver = false;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +23,49 @@ public class GameMaster : MonoBehaviour
     void Update()
     {
         RotateSky();
+
+        switch (shipHealthValue)
+        {
+            case 0:
+                if (!gameOver)
+                {
+                    ShipIsDestroyed();
+                    gameOver = true;
+                }
+                break;
+            case 100:
+                if (!gameOver)
+                {
+                    ShipIsRepaired();
+                    gameOver = true;
+                }
+                break;
+        }
+        
     }
+
+
+    public void RepairShip()
+    {
+        shipHealthValue += 10f;
+        shipHealth.fillAmount = shipHealthValue / 100;
+    }
+
+    public void DamageShip()
+    {
+        shipHealthValue -= 1f;
+        shipHealth.fillAmount = shipHealthValue / 100;
+    }
+    void ShipIsRepaired()
+    {
+        print("Congrats you win!");
+    }
+
+    void ShipIsDestroyed()
+    {
+        print("Booo you lose >:(");
+    }
+
 
 
     private void RotateSky()

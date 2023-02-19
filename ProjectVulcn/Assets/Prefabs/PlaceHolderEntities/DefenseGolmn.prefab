@@ -383,12 +383,13 @@ MonoBehaviour:
   defenseGolem: {fileID: 6611208192334826067}
   searchingHitBox: {fileID: 8880340643233491153}
   defenseAgent: {fileID: 0}
-  defenseLocation: {x: 0, y: 0, z: 0}
-  defenseRotation: {x: 0, y: 0, z: 0, w: 0}
   golemHealth: 100
   golemHealthBar: {fileID: 1344186390300885369}
+  targetFound: 0
+  searchingForTarget: 1
+  firstBlood: 0
   movePoint: {fileID: 0}
-  enemyList: []
+  scrapWolfTargets: []
 --- !u!54 &2860020809478825902
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -437,7 +438,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2.0000002
-  m_BaseOffset: 1
+  m_BaseOffset: 0.7
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!1 &7225131375127719315

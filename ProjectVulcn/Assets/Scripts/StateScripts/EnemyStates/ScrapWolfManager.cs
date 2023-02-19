@@ -12,6 +12,9 @@ public class ScrapWolfManager : MonoBehaviour
     public KillState killState = new KillState();
     public killShipState killShipState = new killShipState();
 
+    GameObject theGameMaster;
+    public GameMaster gameMaster;
+
     [Header("The Wolf")]
     public GameObject scrapWolf;
     public NavMeshAgent scrapWolfAgent;
@@ -34,6 +37,9 @@ public class ScrapWolfManager : MonoBehaviour
         scrapWolfAgent = GetComponent<NavMeshAgent>();
         shipToDestroy = GameObject.FindGameObjectWithTag("WeakSpot");
         currentState = prowlingState;
+
+        theGameMaster = GameObject.FindGameObjectWithTag("GameMaster");
+        gameMaster = theGameMaster.GetComponent<GameMaster>();
     }
 
     void Update()
@@ -76,13 +82,13 @@ public class ScrapWolfManager : MonoBehaviour
                 SwitchState(huntState);
             }
         }
+    }
 
-
-        if(other.tag == "WeakSpot")
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag == "WeakSpot")
         {
             SwitchState(killShipState);
         }
     }
-
-
 }

@@ -17,7 +17,7 @@ public class HuntState : ScrapWolfSetter
     public override void RunCurrentState(ScrapWolfManager state)
     {
             wolfAgent = state.scrapWolfAgent;
-            wolfAgent.speed = 4f;
+            wolfAgent.speed = 2.5f;
             golemToKill = state.defenseGolemTargets[0];
 
 
