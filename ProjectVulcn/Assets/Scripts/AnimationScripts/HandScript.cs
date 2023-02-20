@@ -10,10 +10,6 @@ public class HandScript : MonoBehaviour
 
     public Animator rightAnimator;
 
-    [Header("Public GameObjects")]
-    public GameObject gauntletCanvas;
-    public GameObject UISelector;
-
     void Start()
     {
         List<InputDevice> vrControllers = new List<InputDevice>();
@@ -26,19 +22,7 @@ public class HandScript : MonoBehaviour
 
     void Update()
     {
-
-        theTargetDevice.TryGetFeatureValue(CommonUsages.primaryButton, out bool theAbutton);
-        if (theAbutton)
-        {
-            gauntletCanvas.SetActive(true);
-            UISelector.SetActive(true);
-        }
-        else
-        {
-            gauntletCanvas.SetActive(false);
-            UISelector.SetActive(false);
-        }
-
+        
         theTargetDevice.TryGetFeatureValue(CommonUsages.trigger, out float rightTriggerVal);
         theTargetDevice.TryGetFeatureValue(CommonUsages.grip, out float rightGripVal);
 

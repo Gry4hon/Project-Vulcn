@@ -18,6 +18,7 @@ TagManager:
   - InRange
   - GameMaster
   - Hands
+  - RightHand
   layers:
   - Default
   - TransparentFX

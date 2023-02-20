@@ -13,8 +13,6 @@ public class GolemCreationManager : MonoBehaviour
     AnimatePoint animatePoint;
 
 
-   //public bool isSocketed;
-
 
     // Start is called before the first frame update
     void Start()
@@ -23,8 +21,6 @@ public class GolemCreationManager : MonoBehaviour
         animatePoint = GameObject.Find("AnimatePoint").GetComponent<AnimatePoint>();
 
     }
-
-
 
 
     private void OnTriggerEnter(Collider other)
