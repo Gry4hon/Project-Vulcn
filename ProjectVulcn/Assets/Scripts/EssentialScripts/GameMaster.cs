@@ -1,23 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameMaster : MonoBehaviour
 {
     [SerializeField] private Material skyBox;
-    private float shipHealthValue = 99f;
+    private float shipHealthValue = 90f;
 
     [Header("Essential GameObjects")]
     public Image shipHealth;
 
     bool gameOver = false;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -47,13 +42,13 @@ public class GameMaster : MonoBehaviour
 
     public void RepairShip()
     {
-        shipHealthValue += 10f;
+        shipHealthValue += 1f;
         shipHealth.fillAmount = shipHealthValue / 100;
     }
 
     public void DamageShip()
     {
-        shipHealthValue -= 1f;
+        shipHealthValue -= 5f;
         shipHealth.fillAmount = shipHealthValue / 100;
     }
     void ShipIsRepaired()

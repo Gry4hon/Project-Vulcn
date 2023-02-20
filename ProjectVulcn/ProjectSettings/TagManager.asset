@@ -17,14 +17,15 @@ TagManager:
   - Defense
   - InRange
   - GameMaster
+  - Hands
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
+  - Piece
   - 
   - 
   - 

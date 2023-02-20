@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7098607946567427927}
   - component: {fileID: 7098607946567427921}
   m_Layer: 0
-  m_Name: ScrapPiece
+  m_Name: wedw
   m_TagString: Scrap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,8 +112,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.027912889, y: 0.045208823, z: 0.007296207}
-  m_Center: {x: -0.0004395154, y: 0.0015214318, z: -0.0026351507}
+  m_Size: {x: 0.027912887, y: 0.033827957, z: 0.0027387643}
+  m_Center: {x: -0.00043951313, y: 0.0012490061, z: -0.0023623665}
 --- !u!114 &7098607946567427921
 MonoBehaviour:
   m_ObjectHideFlags: 0
