@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class GameMaster : MonoBehaviour
 {
     [SerializeField] private Material skyBox;
-    private float shipHealthValue = 90f;
+    private float shipHealthValue = 50f;
 
     [Header("Essential GameObjects")]
     public Image shipHealth;
@@ -42,7 +42,7 @@ public class GameMaster : MonoBehaviour
 
     public void RepairShip()
     {
-        shipHealthValue += 1f;
+        shipHealthValue += 5f;
         shipHealth.fillAmount = shipHealthValue / 100;
     }
 

@@ -13,7 +13,6 @@ public class GauntletAnimation : MonoBehaviour
     [Header("Essential GameObjects")]
     public BoxCollider toDestroy;
     public Rigidbody bodyToDestroy;
-   
     public BoxCollider toEnable;
     public GameObject gauntletPoint;
     public HandScript handScript;
@@ -44,7 +43,7 @@ public class GauntletAnimation : MonoBehaviour
         if (isOn)
         {
 
-            //theTargetDevice.TryGetFeatureValue(CommonUsages.primaryButton, out bool theAbutton);
+            theTargetDevice.TryGetFeatureValue(CommonUsages.primaryButton, out bool theAbutton);
 
 
 
@@ -54,18 +53,26 @@ public class GauntletAnimation : MonoBehaviour
             gauntletAnimator.SetFloat("Grip", rightGripVal);
             gauntletAnimator.SetFloat("Trigger", rightTriggerVal);
 
-            if (rightTriggerVal > 0.1f)
+            if (theAbutton)
             {
                 //gauntletAnimator.SetFloat("Grip", -1) ;
                 gauntletCanvas.SetActive(true);
                 UISelector.SetActive(true);
-                animatePoint.SetActive(true);
+
             }
             else
             {
                 //gauntletAnimator.SetFloat("Grip", rightGripVal);
                 gauntletCanvas.SetActive(false);
                 UISelector.SetActive(false);
+            }
+
+            if (rightTriggerVal > 0.9f)
+            {
+                animatePoint.SetActive(true);
+            }
+            else
+            {
                 animatePoint.SetActive(false);
             }
 

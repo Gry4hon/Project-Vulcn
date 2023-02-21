@@ -19,7 +19,7 @@ public class CheckPile : MonoBehaviour
             scrapPile = other.gameObject;
         }
 
-        if (other.tag == "Hands")
+        if (other.tag == "Hands" || other.tag == "RightHand")
         {
             scrapCollider.enabled = false;
         }
@@ -27,7 +27,7 @@ public class CheckPile : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Hands")
+        if (other.tag == "Hands" || other.tag == "RightHand")
         {
             scrapCollider.enabled = false;
         }
