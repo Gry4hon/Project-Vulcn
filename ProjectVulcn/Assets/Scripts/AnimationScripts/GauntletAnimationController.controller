@@ -30,16 +30,7 @@ BlendTree:
     m_Motion: {fileID: 2046859387764889662, guid: e26fb68cca8705b47bb293e10205cc46,
       type: 3}
     m_Threshold: 0.6666667
-    m_Position: {x: -1, y: 0}
-    m_TimeScale: 1
-    m_CycleOffset: 0
-    m_DirectBlendParameter: Trigger
-    m_Mirror: 0
-  - serializedVersion: 2
-    m_Motion: {fileID: -1779665288830801068, guid: e26fb68cca8705b47bb293e10205cc46,
-      type: 3}
-    m_Threshold: 1
-    m_Position: {x: 1, y: 1}
+    m_Position: {x: 0, y: 1}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Trigger
@@ -47,7 +38,7 @@ BlendTree:
   m_BlendParameter: Grip
   m_BlendParameterY: Trigger
   m_MinThreshold: 0
-  m_MaxThreshold: 1
+  m_MaxThreshold: 0.6666667
   m_UseAutomaticThresholds: 1
   m_NormalizedBlendValues: 0
   m_BlendType: 3

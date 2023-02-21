@@ -43,7 +43,10 @@ public class GauntletAnimation : MonoBehaviour
 
         if (isOn)
         {
-            theGauntlet.transform.position = new Vector3(gauntletPoint.transform.position.x, gauntletPoint.transform.position.y, gauntletPoint.transform.position.z);
+
+            //theTargetDevice.TryGetFeatureValue(CommonUsages.primaryButton, out bool theAbutton);
+
+
 
             theTargetDevice.TryGetFeatureValue(CommonUsages.trigger, out float rightTriggerVal);
             theTargetDevice.TryGetFeatureValue(CommonUsages.grip, out float rightGripVal);
@@ -51,17 +54,16 @@ public class GauntletAnimation : MonoBehaviour
             gauntletAnimator.SetFloat("Grip", rightGripVal);
             gauntletAnimator.SetFloat("Trigger", rightTriggerVal);
 
-            theTargetDevice.TryGetFeatureValue(CommonUsages.primaryButton, out bool theAbutton);
-            if (theAbutton)
+            if (rightTriggerVal > 0.1f)
             {
-                gauntletAnimator.SetFloat("Grip", -1) ;
+                //gauntletAnimator.SetFloat("Grip", -1) ;
                 gauntletCanvas.SetActive(true);
                 UISelector.SetActive(true);
                 animatePoint.SetActive(true);
             }
             else
             {
-                gauntletAnimator.SetFloat("Grip", rightGripVal);
+                //gauntletAnimator.SetFloat("Grip", rightGripVal);
                 gauntletCanvas.SetActive(false);
                 UISelector.SetActive(false);
                 animatePoint.SetActive(false);
@@ -77,6 +79,9 @@ public class GauntletAnimation : MonoBehaviour
             Destroy(gauntletGrabbable);
             Destroy(bodyToDestroy);
 
+            theGauntlet.transform.position = new Vector3(gauntletPoint.transform.position.x, gauntletPoint.transform.position.y, gauntletPoint.transform.position.z);
+            theGauntlet.transform.rotation = gauntletPoint.transform.rotation;
+            theGauntlet.transform.parent = gauntletPoint.transform;
             toEnable.enabled= true;
             isActive = true;
         }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2057882528}
-  m_IndirectSpecularColor: {r: 0.21066985, g: 0.08493572, b: 0.062854715, a: 1}
+  m_IndirectSpecularColor: {r: 0.21067359, g: 0.084935404, b: 0.06285432, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2050,7 +2050,7 @@ RectTransform:
   m_Children:
   - {fileID: 1417988052}
   m_Father: {fileID: 2096476898}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 27.868, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5013,7 +5013,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2096476898}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1327445100
 PrefabInstance:
@@ -6333,7 +6333,7 @@ Transform:
   m_Father: {fileID: 929827645}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1928234904
+--- !u!1 &1947821643
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6341,7 +6341,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1928234905}
+  - component: {fileID: 1947821644}
   m_Layer: 3
   m_Name: GauntletPoint
   m_TagString: Untagged
@@ -6349,20 +6349,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1928234905
+--- !u!4 &1947821644
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1928234904}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0368, y: -0.008, z: -0.0747}
+  m_GameObject: {fileID: 1947821643}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0.0363, y: -0.0117, z: -0.0807}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2096476898}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &2003871726
 GameObject:
   m_ObjectHideFlags: 0
@@ -6677,9 +6677,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1928234905}
   - {fileID: 686403201}
   - {fileID: 1315902165}
+  - {fileID: 1947821644}
   - {fileID: 5003668035938603058}
   m_Father: {fileID: 1348473837}
   m_RootOrder: 2
@@ -7252,7 +7252,7 @@ MonoBehaviour:
   toDestroy: {fileID: 919132148007159398}
   bodyToDestroy: {fileID: 919132148007159399}
   toEnable: {fileID: 919132148007159403}
-  gauntletPoint: {fileID: 2096476897}
+  gauntletPoint: {fileID: 1947821643}
   handScript: {fileID: 2096476902}
   gauntletCanvas: {fileID: 686403200}
   UISelector: {fileID: 1105104007}
@@ -7366,12 +7366,12 @@ PrefabInstance:
     - target: {fileID: 1922243505148513640, guid: 423eeb0d949e1a840ae8693b6a25f91b,
         type: 3}
       propertyPath: m_Name
-      value: PointerFinger
+      value: Bone.005
       objectReference: {fileID: 0}
     - target: {fileID: 5645620596307320141, guid: 423eeb0d949e1a840ae8693b6a25f91b,
         type: 3}
       propertyPath: m_Name
-      value: PointerEnd
+      value: Bone.013_end
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 423eeb0d949e1a840ae8693b6a25f91b, type: 3}

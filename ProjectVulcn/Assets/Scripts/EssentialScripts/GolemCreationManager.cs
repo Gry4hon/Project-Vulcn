@@ -38,9 +38,13 @@ public class GolemCreationManager : MonoBehaviour
     {
         if (other.tag == "ScrapPiece")
         {
-            animatePoint.isSocketed = true;
-            thePiece.transform.position = attachPoint.transform.position;
-            thePiece.transform.rotation = attachPoint.transform.rotation;
+            if(thePiece != null)
+            {
+                animatePoint.isSocketed = true;
+                thePiece.transform.position = attachPoint.transform.position;
+                thePiece.transform.rotation = attachPoint.transform.rotation;
+            }
+
         }
     }
 
