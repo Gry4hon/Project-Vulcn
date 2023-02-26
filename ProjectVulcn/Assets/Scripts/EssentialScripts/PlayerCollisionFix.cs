@@ -20,8 +20,8 @@ public class PlayerCollisionFix : MonoBehaviour
 
         thePlayer.center = new Vector3(playerCenterPoint.x, thePlayer.height / 2 + thePlayer.skinWidth , playerCenterPoint.z);
 
-        thePlayer.Move(new Vector3(0.001f, -0.001f, 0.001f));
-        thePlayer.Move(new Vector3(-0.001f, 0.001f, -0.001f));
+        //thePlayer.Move(new Vector3(0.001f, -0.001f, 0.001f));
+        //thePlayer.Move(new Vector3(-0.001f, 0.001f, -0.001f));
 
     }
 

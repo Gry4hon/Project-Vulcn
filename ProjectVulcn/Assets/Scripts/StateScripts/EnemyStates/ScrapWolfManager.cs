@@ -82,13 +82,13 @@ public class ScrapWolfManager : MonoBehaviour
                 SwitchState(huntState);
             }
         }
-    }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.tag == "WeakSpot")
+        if(other.tag == "WeakSpot")
         {
+            scrapWolfAgent.destination = scrapWolf.transform.position;
             SwitchState(killShipState);
         }
     }
+
+
 }

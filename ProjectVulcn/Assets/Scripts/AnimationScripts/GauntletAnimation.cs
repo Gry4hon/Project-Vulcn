@@ -53,27 +53,25 @@ public class GauntletAnimation : MonoBehaviour
             gauntletAnimator.SetFloat("Grip", rightGripVal);
             gauntletAnimator.SetFloat("Trigger", rightTriggerVal);
 
-            if (theAbutton)
+            if (rightGripVal > 0.9 && theAbutton)
             {
-                //gauntletAnimator.SetFloat("Grip", -1) ;
-                gauntletCanvas.SetActive(true);
-                UISelector.SetActive(true);
-
-            }
-            else
-            {
-                //gauntletAnimator.SetFloat("Grip", rightGripVal);
-                gauntletCanvas.SetActive(false);
-                UISelector.SetActive(false);
-            }
-
-            if (rightTriggerVal > 0.9f)
-            {
+                gauntletAnimator.SetFloat("Trigger", rightGripVal * 2f);
                 animatePoint.SetActive(true);
             }
             else
             {
                 animatePoint.SetActive(false);
+            }
+
+            if (rightGripVal < 0.9 && theAbutton)
+            {
+                gauntletCanvas.SetActive(true);
+                UISelector.SetActive(true);
+            }
+            else
+            {
+                gauntletCanvas.SetActive(false);
+                UISelector.SetActive(false);
             }
 
 
@@ -103,5 +101,6 @@ public class GauntletAnimation : MonoBehaviour
             Destroy(other.gameObject);
             isOn = true;
         }
+
     }
 }

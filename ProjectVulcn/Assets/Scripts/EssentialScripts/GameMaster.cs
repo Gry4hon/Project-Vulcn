@@ -10,11 +10,25 @@ public class GameMaster : MonoBehaviour
     private float shipHealthValue = 50f;
 
     [Header("Essential GameObjects")]
+    [SerializeField] private GameObject scrapWolf;
+    [SerializeField] private GameObject scrapPile;
     public Image shipHealth;
 
     bool gameOver = false;
+    bool gauntletIsWorn = false;
 
-    // Update is called once per frame
+    List<GameObject> spawnPoints = new List<GameObject>();
+
+    private void Start()
+    {
+        foreach (GameObject points in GameObject.FindGameObjectsWithTag("spawn"))
+        {
+                spawnPoints.Add(points);
+        }
+
+       gauntletIsWorn = true;
+    }
+
     void Update()
     {
         RotateSky();
@@ -36,7 +50,25 @@ public class GameMaster : MonoBehaviour
                 }
                 break;
         }
+
+        if (gauntletIsWorn)
+        {
+            SpawnWolves();
+            gauntletIsWorn=false;
+        }
         
+    }
+
+    private void SpawnWolves()
+    {
+        int randomPoint = Random.Range(1, 3);
+        int randomWolves = Random.Range(5, 10);
+
+        for(int i = 0; i < randomWolves; i++) {
+            Instantiate(scrapWolf, spawnPoints[randomPoint].transform);
+        }
+        print(randomWolves);
+
     }
 
 
