@@ -17,6 +17,7 @@ public class GameMaster : MonoBehaviour
     [Header("UI Elements")]
     [SerializeField] private GameObject winScreen;
     [SerializeField] private GameObject loseScreen;
+
     [SerializeField] private Image shipHealth;
 
     bool gameOver = false;
@@ -171,4 +172,11 @@ public class GameMaster : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+
 }

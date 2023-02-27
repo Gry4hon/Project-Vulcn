@@ -8,6 +8,9 @@ public class LeftHandAnimator : MonoBehaviour
 
     public Animator leftAnimator;
     private InputDevice theTargetDevice;
+    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject playerRayCast;
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +27,7 @@ public class LeftHandAnimator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        theTargetDevice.TryGetFeatureValue(CommonUsages.primaryButton, out bool theXbutton);
         theTargetDevice.TryGetFeatureValue(CommonUsages.trigger, out float leftTriggerVal);
         theTargetDevice.TryGetFeatureValue(CommonUsages.grip, out float leftGripVal);
 
@@ -33,6 +36,22 @@ public class LeftHandAnimator : MonoBehaviour
         leftAnimator.SetFloat("Grip", leftGripVal);
         leftAnimator.SetFloat("Trigger", leftTriggerVal);
 
+        if (theXbutton)
+        {
+            
+            pauseMenu.SetActive(true);
+            playerRayCast.SetActive(true);
+            Time.timeScale = 0f;
+            
+        }
+        else
+        {
+            
+            pauseMenu.SetActive(false);
+            playerRayCast.SetActive(false);
+            Time.timeScale = 1f;
+            
+        }
 
     }
 }
