@@ -15,24 +15,30 @@ public class AnimatePoint : MonoBehaviour
     CheckPile checkPile;
     ScrapScript destroyScrap;
 
-    CanvasManager golemMode;
+    bool defenseModeSet = false;
+    bool repairModeSet = false;
 
     public bool isSocketed;
-    bool defenseMode = false;
-    bool repairMode = false;
 
-    private void Start()
+
+
+    public void SetToDefenseMode()
     {
-        golemMode = gauntletCanvas.GetComponent<CanvasManager>();
+        print("Set to Defense Mode");
+        defenseModeSet = true;
+        repairModeSet = false;
     }
 
+    public void SetToRepairMode()
+    {
+        print("Set to Repair Mode");
+        repairModeSet = true;
+        defenseModeSet = false;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        repairMode = golemMode.repairModeSet;
-        defenseMode = golemMode.defenseModeSet;
-
-        if (repairMode)
+        if (repairModeSet)
         {
             if (thePile != null)
             {
@@ -50,15 +56,19 @@ public class AnimatePoint : MonoBehaviour
             }
         }
 
-        if (defenseMode)
+        if (defenseModeSet)
         {
+            print("Ready");
             if (thePile != null)
             {
+                print("set");
                 if (isSocketed && other.tag == "ScrapPiece")
                 {
+                    print("almost there");
                     checkPile = other.GetComponent<CheckPile>();
                     if (checkPile.scrapPile.name == thePile.name)
                     {
+                        print("go!");
                         destroyScrap = thePile.GetComponent<ScrapScript>();
                         Destroy(other.gameObject);
                         destroyScrap.SpawnDGolem();

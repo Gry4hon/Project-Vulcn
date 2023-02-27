@@ -10,8 +10,6 @@ public class ScrapScript : MonoBehaviour
     public GameObject defenseGolmn;
     public GameObject repairGolmn;
 
-
-
     private void Start()
     {
         scrapLocation = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);

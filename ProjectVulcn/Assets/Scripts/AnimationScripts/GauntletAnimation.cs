@@ -46,9 +46,6 @@ public class GauntletAnimation : MonoBehaviour
         {
 
             theTargetDevice.TryGetFeatureValue(CommonUsages.primaryButton, out bool theAbutton);
-
-
-
             theTargetDevice.TryGetFeatureValue(CommonUsages.trigger, out float rightTriggerVal);
             theTargetDevice.TryGetFeatureValue(CommonUsages.grip, out float rightGripVal);
 
@@ -106,4 +103,5 @@ public class GauntletAnimation : MonoBehaviour
         }
 
     }
+
 }

@@ -7,23 +7,16 @@ public class GolemCreationManager : MonoBehaviour
 {
     public GameObject thePiece;
     GameObject attachPoint;
+    GameObject thisPile;
     public AnimatePoint animatePoint;
 
-    // Start is called before the first frame update
     void Start()
     {
         attachPoint = this.transform.GetChild(0).gameObject;
+        thisPile = this.gameObject;
     }
 
     private void Update()
-    {
-        if (GameObject.FindGameObjectWithTag("Gauntlet") != null)
-        {
-            animatePoint = GameObject.FindGameObjectWithTag("Gauntlet").GetComponent<AnimatePoint>();
-        }
-    }
-
-    private void FixedUpdate()
     {
         if (GameObject.FindGameObjectWithTag("Gauntlet") != null)
         {
@@ -35,13 +28,8 @@ public class GolemCreationManager : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.tag == "ScrapPiece")
+        if (other.tag == "ScrapPiece" )
         {
-            if (animatePoint != null)
-            {
-                animatePoint.isSocketed = true;
-                animatePoint.thePile = this.gameObject;
-            }
             thePiece = other.gameObject;
         }
     }
@@ -51,11 +39,13 @@ public class GolemCreationManager : MonoBehaviour
 
         if (other.tag == "ScrapPiece")
         {
-            if (thePiece != null)
+            if (thePiece != null )
             {
-                if (animatePoint != null)
+                if (GameObject.FindGameObjectWithTag("Gauntlet") != null)
                 {
+                    animatePoint.thePile = thisPile;
                     animatePoint.isSocketed = true;
+                    print("there is indeed a refrance to animate point");
                 }
                 thePiece.transform.position = attachPoint.transform.position;
                 thePiece.transform.rotation = attachPoint.transform.rotation;
@@ -69,10 +59,11 @@ public class GolemCreationManager : MonoBehaviour
 
         if (other.tag == "ScrapPiece")
         {
-            if (animatePoint != null)
+            if (GameObject.FindGameObjectWithTag("Gauntlet") != null)
             {
                 animatePoint.thePile = null;
-                animatePoint.isSocketed = true;
+                animatePoint.isSocketed = false;
+                print("There was indeed a refrance to animate point");
             }
             thePiece = null;
         }

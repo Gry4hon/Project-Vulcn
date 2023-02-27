@@ -12,7 +12,7 @@ public class GameMaster : MonoBehaviour
     [Header("Essential GameObjects")]
     [SerializeField] private GameObject scrapWolf;
     [SerializeField] private GameObject scrapPile;
-    [SerializeField] private GameObject playerRayCast;
+    public  GameObject playerRayCast;
 
     [Header("UI Elements")]
     [SerializeField] private GameObject winScreen;
@@ -30,7 +30,7 @@ public class GameMaster : MonoBehaviour
     bool fiftyReached = false;
     bool seventyFiveReached = false;
 
-   List<GameObject> spawnPoints = new List<GameObject>();
+   public List<GameObject> spawnPoints = new List<GameObject>();
    List<GameObject> enemyList = new List<GameObject>();
 
     private void Start()

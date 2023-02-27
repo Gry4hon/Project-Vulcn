@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2057882528}
-  m_IndirectSpecularColor: {r: 0.23612018, g: 0.09521915, b: 0.0704311, a: 1}
+  m_IndirectSpecularColor: {r: 0.23617549, g: 0.09521864, b: 0.070430465, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1140,7 +1140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &203397205
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3464,8 +3464,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 686403205}
-        m_TargetAssemblyTypeName: CanvasManager, Assembly-CSharp
+      - m_Target: {fileID: 97989560}
+        m_TargetAssemblyTypeName: AnimatePoint, Assembly-CSharp
         m_MethodName: SetToRepairMode
         m_Mode: 1
         m_Arguments:
@@ -3819,8 +3819,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 450b6deb6af81804d8ccea70dd6eaf4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defenseModeSet: 0
-  repairModeSet: 0
 --- !u!1001 &711468755
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5484,7 +5482,7 @@ GameObject:
   - component: {fileID: 1105104011}
   - component: {fileID: 1105104010}
   - component: {fileID: 1105104009}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: RayCast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6293,8 +6291,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 686403205}
-        m_TargetAssemblyTypeName: CanvasManager, Assembly-CSharp
+      - m_Target: {fileID: 97989560}
+        m_TargetAssemblyTypeName: AnimatePoint, Assembly-CSharp
         m_MethodName: SetToDefenseMode
         m_Mode: 1
         m_Arguments:
@@ -7719,7 +7717,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftAnimator: {fileID: 3948745933779050213}
   pauseMenu: {fileID: 203397204}
-  playerRayCast: {fileID: 1105104007}
 --- !u!1 &1577425440
 GameObject:
   m_ObjectHideFlags: 0

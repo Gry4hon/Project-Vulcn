@@ -9,7 +9,7 @@ public class LeftHandAnimator : MonoBehaviour
     public Animator leftAnimator;
     private InputDevice theTargetDevice;
     [SerializeField] private GameObject pauseMenu;
-    [SerializeField] private GameObject playerRayCast;
+    //public GameObject playerRayCast;
 
 
     // Start is called before the first frame update
@@ -40,7 +40,7 @@ public class LeftHandAnimator : MonoBehaviour
         {
             
             pauseMenu.SetActive(true);
-            playerRayCast.SetActive(true);
+            //playerRayCast.SetActive(true);
             Time.timeScale = 0f;
             
         }
@@ -48,7 +48,7 @@ public class LeftHandAnimator : MonoBehaviour
         {
             
             pauseMenu.SetActive(false);
-            playerRayCast.SetActive(false);
+            //playerRayCast.SetActive(false);
             Time.timeScale = 1f;
             
         }
