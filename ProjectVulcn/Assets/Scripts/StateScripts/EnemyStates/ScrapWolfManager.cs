@@ -26,6 +26,8 @@ public class ScrapWolfManager : MonoBehaviour
     public bool searchingForTarget = true;
     public bool firstBlood = false;
 
+    public bool isGoingToShip = true;
+
     [Header("Targets")]
     public GameObject shipToDestroy;
     public List<GameObject> defenseGolemTargets = new List<GameObject>();
@@ -82,11 +84,22 @@ public class ScrapWolfManager : MonoBehaviour
                 SwitchState(huntState);
             }
         }
-
-        if(other.tag == "WeakSpot")
+        if(other.tag == "SlowZone")
         {
-            scrapWolfAgent.destination = scrapWolf.transform.position;
-            SwitchState(killShipState);
+            scrapWolfAgent.speed = 2f;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.tag == "WeakSpot")
+        {
+            if (isGoingToShip)
+            {
+                scrapWolfAgent.destination = scrapWolf.transform.position;
+                SwitchState(killShipState);
+                isGoingToShip = false;
+            }
         }
     }
 

@@ -21,6 +21,8 @@ TagManager:
   - RightHand
   - gauntlet
   - spawn
+  - SlowZone
+  - PlayerUI
   layers:
   - Default
   - TransparentFX

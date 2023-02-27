@@ -13,6 +13,8 @@ public class ProwlState : ScrapWolfSetter
         state.searchingHitBox.isTrigger = true;
         state.searchingForTarget = true;
 
+        state.isGoingToShip= true;
+
         state.defenseGolemTargets.Clear();
     }
 

@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class killShipState : ScrapWolfSetter
 {
-
     ScrapWolfManager theStateManager;
     public override void EnterState(ScrapWolfManager state)
     {
-        Debug.Log("Killing ship");
         state.scrapWolfAgent.destination = state.scrapWolf.transform.position;
 
         theStateManager = state;

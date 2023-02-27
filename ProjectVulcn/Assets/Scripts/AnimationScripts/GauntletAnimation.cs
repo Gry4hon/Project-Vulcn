@@ -9,6 +9,7 @@ public class GauntletAnimation : MonoBehaviour
     private InputDevice theTargetDevice;
     private GameObject theGauntlet;
     private XRGrabInteractable gauntletGrabbable;
+    private GameMaster gameMaster;
 
     [Header("Essential GameObjects")]
     public BoxCollider toDestroy;
@@ -29,6 +30,7 @@ public class GauntletAnimation : MonoBehaviour
 
     void Start()
     {
+        gameMaster = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
         List<InputDevice> vrControllers = new List<InputDevice>();
         gauntletGrabbable = GetComponent<XRGrabInteractable>();
         InputDevices.GetDevices(vrControllers);
@@ -88,6 +90,7 @@ public class GauntletAnimation : MonoBehaviour
             theGauntlet.transform.rotation = gauntletPoint.transform.rotation;
             theGauntlet.transform.parent = gauntletPoint.transform;
             toEnable.enabled= true;
+            gameMaster.startSpawning = true;
             isActive = true;
         }
 
