@@ -12,6 +12,7 @@ public class GameMaster : MonoBehaviour
     [Header("Essential GameObjects")]
     [SerializeField] private GameObject scrapWolf;
     [SerializeField] private GameObject scrapPile;
+    [SerializeField] private GameObject playerRayCast;
 
     [Header("UI Elements")]
     [SerializeField] private GameObject winScreen;
@@ -22,7 +23,6 @@ public class GameMaster : MonoBehaviour
     public bool startSpawning = false;
     bool newWave = false;
 
-    int newSpawnPoint = 0;
     int numOfWolves = 5;
 
     bool twentyFiveReached = false;
@@ -59,7 +59,6 @@ public class GameMaster : MonoBehaviour
             case 25:
                 if (!twentyFiveReached)
                 {
-                    print("Start Spawning More Wolves");
                     numOfWolves = 10;
                     twentyFiveReached= true;
                 }
@@ -69,8 +68,6 @@ public class GameMaster : MonoBehaviour
 
                 if (!fiftyReached)
                 {
-                    print("Start Spawning at another Point, and start spawning even more wolves");
-                    newSpawnPoint = 1;
                     numOfWolves = 15;
                     fiftyReached= true;
                 }
@@ -79,8 +76,6 @@ public class GameMaster : MonoBehaviour
             case 75:
                 if (!seventyFiveReached)
                 {
-                    print("Start Spawning at all 3 points, and start spawning EVEN MORE wolves!");
-                    newSpawnPoint = 2;
                     numOfWolves = 20;
                     seventyFiveReached= true;
                 }
@@ -97,7 +92,6 @@ public class GameMaster : MonoBehaviour
 
         if (newWave && GameObject.FindGameObjectWithTag("Enemy") == null)
         {
-            print("I will only exacute if there was enemies that have been killed after the gauntlet was picked up");
             newWave = false;
             enemyList.Clear();
             startSpawning = true;
@@ -133,7 +127,7 @@ public class GameMaster : MonoBehaviour
 
     private void SpawnWolves()
     {
-        int randomPoint = Random.Range(0, newSpawnPoint);
+        int randomPoint = Random.Range(0, 2);
 
         for(int i = 0; i < numOfWolves; i++) {
             Instantiate(scrapWolf, spawnPoints[randomPoint].transform.position, Quaternion.identity);
@@ -154,22 +148,27 @@ public class GameMaster : MonoBehaviour
     }
     void ShipIsRepaired()
     {
-        print("Congrats you win!");
-        Time.timeScale = 0f;
+        playerRayCast.SetActive(true);
         winScreen.SetActive(true);
         shipHealth.enabled = false;
+        Time.timeScale = 0f;
     }
 
     void ShipIsDestroyed()
     {
-        print("Booo you lose >:(");
-        Time.timeScale = 0f;
+        playerRayCast.SetActive(true);
         loseScreen.SetActive(true);
         shipHealth.enabled = false;
+        Time.timeScale = 0f;
     }
 
     private void RotateSky()
     {
         RenderSettings.skybox.SetFloat("_Rotation", Time.time * 0.3f);
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(0);
     }
 }

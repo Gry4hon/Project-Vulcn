@@ -10,6 +10,7 @@ public class DefenseStateManager : MonoBehaviour
    public WanderState wanderState = new WanderState();
    public DefendState defendState = new DefendState();
    public DefenceAttackState attackState = new DefenceAttackState();
+   public FollowState followState = new FollowState();
    public DefenseDeath defenseDeath = new DefenseDeath();
 
     [Header("TheGolem")]
@@ -54,6 +55,16 @@ public class DefenseStateManager : MonoBehaviour
 
 
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.tag == "Gauntlet")
+        {
+            SwitchState(followState);
+            //Maybe make it an on off thing? Like if you touch it once it will follow you until you touch it again?
+        }
+    }
+
 
     private void OnCollisionStay(Collision collision)
     {

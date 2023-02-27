@@ -7,7 +7,7 @@ public class GolemCreationManager : MonoBehaviour
 {
     public GameObject thePiece;
     GameObject attachPoint;
-    AnimatePoint animatePoint;
+    public AnimatePoint animatePoint;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +16,14 @@ public class GolemCreationManager : MonoBehaviour
     }
 
     private void Update()
+    {
+        if (GameObject.FindGameObjectWithTag("Gauntlet") != null)
+        {
+            animatePoint = GameObject.FindGameObjectWithTag("Gauntlet").GetComponent<AnimatePoint>();
+        }
+    }
+
+    private void FixedUpdate()
     {
         if (GameObject.FindGameObjectWithTag("Gauntlet") != null)
         {
@@ -51,7 +59,6 @@ public class GolemCreationManager : MonoBehaviour
                 }
                 thePiece.transform.position = attachPoint.transform.position;
                 thePiece.transform.rotation = attachPoint.transform.rotation;
-
             }
         }
 

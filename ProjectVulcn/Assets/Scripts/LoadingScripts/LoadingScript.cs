@@ -6,21 +6,26 @@ using UnityEngine.SceneManagement;
 
 public class LoadingScript : MonoBehaviour
 {
-    private Scene loadingScene;
     private float loadingValue = 0f;
     public Image loadingBar;
     bool loadingDone = false;
+    int randomLoadTime;
+
+    private void Start()
+    {
+        Time.timeScale = 1f;
+        randomLoadTime = Random.Range(5, 60);
+        print("Random Load Time: " + randomLoadTime);
+    }
 
     private void Update()
     {
-        
-        if(loadingValue <= 10)
+        if(loadingValue <= randomLoadTime)
         {
             loadingValue += Time.deltaTime;
-            //print("Loading: " + loadingValue);
-            loadingBar.fillAmount = loadingValue / 10;
+            loadingBar.fillAmount = loadingValue / randomLoadTime;
         }
-        if(loadingValue >= 10 && !loadingDone)
+        if(loadingValue >= randomLoadTime && !loadingDone)
         {
             SceneManager.LoadScene(1);
             loadingDone= true;
