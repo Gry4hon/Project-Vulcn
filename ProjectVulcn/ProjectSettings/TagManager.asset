@@ -23,6 +23,8 @@ TagManager:
   - spawn
   - SlowZone
   - PlayerUI
+  - backpack
+  - playerBack
   layers:
   - Default
   - TransparentFX

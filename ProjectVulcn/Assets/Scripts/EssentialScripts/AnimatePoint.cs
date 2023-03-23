@@ -58,17 +58,15 @@ public class AnimatePoint : MonoBehaviour
 
         if (defenseModeSet)
         {
-            print("Ready");
+
             if (thePile != null)
             {
-                print("set");
                 if (isSocketed && other.tag == "ScrapPiece")
                 {
-                    print("almost there");
                     checkPile = other.GetComponent<CheckPile>();
                     if (checkPile.scrapPile.name == thePile.name)
                     {
-                        print("go!");
+
                         destroyScrap = thePile.GetComponent<ScrapScript>();
                         Destroy(other.gameObject);
                         destroyScrap.SpawnDGolem();

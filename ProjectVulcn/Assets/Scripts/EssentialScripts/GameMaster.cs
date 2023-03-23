@@ -128,7 +128,7 @@ public class GameMaster : MonoBehaviour
 
     private void SpawnWolves()
     {
-        int randomPoint = Random.Range(0, 2);
+        int randomPoint = Random.Range(0, 3);
 
         for(int i = 0; i < numOfWolves; i++) {
             Instantiate(scrapWolf, spawnPoints[randomPoint].transform.position, Quaternion.identity);

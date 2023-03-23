@@ -4,13 +4,18 @@ using Unity.XR.CoreUtils;
 public class PlayerCollisionFix : MonoBehaviour
 {
     private CharacterController thePlayer;
-   private XROrigin playerXrOrigin;
+    private XROrigin playerXrOrigin;
+    private GameObject backPack;
+    private BoxCollider packCollider;
 
     void Start()
     {
         thePlayer = GetComponent<CharacterController>();
         playerXrOrigin= GetComponent<XROrigin>();
-        
+
+        backPack = GameObject.FindGameObjectWithTag("backpack");
+        packCollider = backPack.GetComponent<BoxCollider>();
+
     }
     void FixedUpdate()
     {
@@ -25,5 +30,18 @@ public class PlayerCollisionFix : MonoBehaviour
 
     }
 
-   
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider == packCollider)
+        {
+            packCollider.enabled = false;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        packCollider.enabled = true;
+    }
 }
+   
+

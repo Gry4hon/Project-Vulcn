@@ -45,7 +45,6 @@ public class GolemCreationManager : MonoBehaviour
                 {
                     animatePoint.thePile = thisPile;
                     animatePoint.isSocketed = true;
-                    print("there is indeed a refrance to animate point");
                 }
                 thePiece.transform.position = attachPoint.transform.position;
                 thePiece.transform.rotation = attachPoint.transform.rotation;
@@ -63,7 +62,6 @@ public class GolemCreationManager : MonoBehaviour
             {
                 animatePoint.thePile = null;
                 animatePoint.isSocketed = false;
-                print("There was indeed a refrance to animate point");
             }
             thePiece = null;
         }

@@ -14,8 +14,7 @@ public class LoadingScript : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 1f;
-        randomLoadTime = Random.Range(5, 60);
-        print("Random Load Time: " + randomLoadTime);
+        randomLoadTime = Random.Range(5, 10);
     }
 
     private void Update()
