@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GolemCreationManager : MonoBehaviour
+public class GolemCreationManager : Subject
 {
     public GameObject thePiece;
     GameObject attachPoint;

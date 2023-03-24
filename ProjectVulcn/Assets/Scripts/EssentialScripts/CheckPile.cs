@@ -33,9 +33,6 @@ public class CheckPile : MonoBehaviour
         }
     }
 
-
-
-
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Scrap")

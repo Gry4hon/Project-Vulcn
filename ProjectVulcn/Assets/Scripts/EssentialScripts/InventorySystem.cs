@@ -27,7 +27,9 @@ public class InventorySystem : MonoBehaviour
         packCollider = backPack.GetComponent<BoxCollider>();
         packGrabbable = backPack.GetComponent<XRGrabInteractable>();
         packBody = backPack.GetComponent<Rigidbody>();
-        backPosition = new Vector3(backRef.transform.position.x, backRef.transform.position.y, backRef.transform.position.z);
+        //backPosition = new Vector3(backRef.transform.position.x, backRef.transform.position.y, backRef.transform.position.z);
+
+        
 
         if (packIsOn && packCollider != null)
         {
@@ -45,8 +47,14 @@ public class InventorySystem : MonoBehaviour
              */
 
 
+
             backPack.transform.parent = backRef.transform;
 
+            backPack.transform.rotation = backRef.transform.rotation;
+            backPack.transform.position = backRef.transform.position;
+
+
+            //backPack.transform.Rotate(Vector3.zero);
 
             Destroy(packGrabbable);
             Destroy(packBody);
@@ -65,10 +73,10 @@ public class InventorySystem : MonoBehaviour
     private void SpawnPack()
     {
         Destroy(backPack);
-        Instantiate(packPrefab, backPosition, Quaternion.identity);
-       
-        //print(backRef.transform.eulerAngles);
+        Instantiate(packPrefab);
         packIsOn = true;
+        //print(backRef.transform.eulerAngles);
+
     }
 
 }

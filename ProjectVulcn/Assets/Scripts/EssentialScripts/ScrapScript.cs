@@ -28,9 +28,9 @@ public class ScrapScript : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.collider.tag == "Scrap")
+        if(other.tag == "Scrap")
         {
             scrapLocation.z += 5f;
         }

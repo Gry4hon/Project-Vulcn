@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimatePoint : MonoBehaviour
+public class AnimatePoint : Subject
 {
     //This variable is assigned when a piece is socketed
 
