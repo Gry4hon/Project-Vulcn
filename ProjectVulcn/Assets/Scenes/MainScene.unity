@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2057882528}
-  m_IndirectSpecularColor: {r: 0.23638675, g: 0.09519469, b: 0.07037295, a: 1}
+  m_IndirectSpecularColor: {r: 0.23655418, g: 0.095158145, b: 0.070324674, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -416,6 +416,10 @@ PrefabInstance:
     - target: {fileID: 128384, guid: a65acf0cbf56b80419f74ebf0bc845f4, type: 3}
       propertyPath: m_Name
       value: SerialController
+      objectReference: {fileID: 0}
+    - target: {fileID: 128384, guid: a65acf0cbf56b80419f74ebf0bc845f4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 405068, guid: a65acf0cbf56b80419f74ebf0bc845f4, type: 3}
       propertyPath: m_RootOrder
@@ -10293,6 +10297,7 @@ MonoBehaviour:
   UISelector: {fileID: 1105104007}
   gauntletAnimator: {fileID: 919132148007159401}
   animatePoint: {fileID: 97989559}
+  serialController: {fileID: 0}
 --- !u!65 &919132148007159403
 BoxCollider:
   m_ObjectHideFlags: 0

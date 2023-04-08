@@ -25,32 +25,42 @@ public class GauntletAnimation : MonoBehaviour
     public Animator gauntletAnimator;
     public GameObject animatePoint;
 
-    [Header("Arduino Stuff")]
-    public SerialController serialController;
-
     private bool isOn = false;
     private bool isActive = false;
 
+    [Header("Arduino Stuff")]
+    public SerialController serialController;
+    private bool isCharging = false;
+
+    float redTimer = 15f;
+    float yellowTimer = 0f;
+    float greenTimer = 0f;
+
+    bool runningRedTimer = true;
+    bool runningYellowTimer = false;
+    bool runningGreenTimer = false;
+
+
+
     void Start()
     {
-        serialController = GameObject.Find("SerialController").GetComponent<SerialController>();
+
         gameMaster = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
         List<InputDevice> vrControllers = new List<InputDevice>();
         gauntletGrabbable = GetComponent<XRGrabInteractable>();
         InputDevices.GetDevices(vrControllers);
         theGauntlet = this.gameObject;
         theTargetDevice = vrControllers[2];
+        serialController = GameObject.Find("SerialController").GetComponent<SerialController>();
     }
 
 
     void Update()
     {
-
-
-
-
         if (isOn)
         {
+
+
             theTargetDevice.TryGetFeatureValue(CommonUsages.primaryButton, out bool theAbutton);
             theTargetDevice.TryGetFeatureValue(CommonUsages.trigger, out float rightTriggerVal);
             theTargetDevice.TryGetFeatureValue(CommonUsages.grip, out float rightGripVal);
@@ -62,30 +72,20 @@ public class GauntletAnimation : MonoBehaviour
             {
                 gauntletAnimator.SetFloat("Trigger", rightGripVal * 2f);
                 animatePoint.SetActive(true);
-
-
+                isCharging= true;
             }
             else
             {
                 animatePoint.SetActive(false);
-
+                isCharging= false;
             }
 
-            if (theAbutton)
-            {
-                Debug.Log("Sending A");
-                serialController.SendSerialMessage("A");
-            }
-            else
-            {
-                Debug.Log("Sending Z");
-                serialController.SendSerialMessage("Z");
-            }
 
             if (rightGripVal < 0.9 && theAbutton)
             {
                 gauntletCanvas.SetActive(true);
                 UISelector.SetActive(true);
+
             }
             else
             {
@@ -93,32 +93,12 @@ public class GauntletAnimation : MonoBehaviour
                 UISelector.SetActive(false);
             }
 
-            string message = serialController.ReadSerialMessage();
-
-            if (message == null)
-            {
-                return;
-            }
-            // Check if the message is plain data or a connect/disconnect event.
-            if (ReferenceEquals(message, SerialController.SERIAL_DEVICE_CONNECTED))
-            {
-                Debug.Log("Connection established");
-            }
-
-            else if (ReferenceEquals(message, SerialController.SERIAL_DEVICE_DISCONNECTED))
-            {
-                Debug.Log("Connection attempt failed or disconnection detected");
-            }
-
-            else
-            {
-                Debug.Log("Message arrived: " + message);
-            }
 
         }
         
         if(isOn && !isActive)
         {
+
             theGauntlet.tag = "Hands";
             Destroy(toDestroy);
             Destroy(gauntletGrabbable);
@@ -130,6 +110,11 @@ public class GauntletAnimation : MonoBehaviour
             toEnable.enabled= true;
             gameMaster.startSpawning = true;
             isActive = true;
+        }
+
+        if (isCharging)
+        {
+            LightUpTheNight();
         }
 
     }
@@ -144,5 +129,75 @@ public class GauntletAnimation : MonoBehaviour
         }
 
     }
+
+    private void LightUpTheNight()
+    {
+
+
+        if(redTimer > 0)
+        {
+            redTimer -= Time.deltaTime;
+            //print("Red Timer: " + redTimer.ToString());
+        }else if(redTimer <= 0 && runningRedTimer)
+        {
+            yellowTimer = 15f;
+            runningYellowTimer = true;
+           print("Red Timer Done... Going to yellow timer");
+            Debug.Log("Sending 1");
+            serialController.SendSerialMessage("1");
+            runningRedTimer = false;
+        }
+
+        if(yellowTimer > 0)
+        {
+            yellowTimer -= Time.deltaTime;
+            //print("Yellow Timer: " + yellowTimer.ToString());
+        }else if(yellowTimer <= 0 && runningYellowTimer)
+        {
+            greenTimer = 15f;
+            runningGreenTimer = true;
+            //print("Yellow Timer Done... Going to green timer");
+            Debug.Log("Sending 2");
+            serialController.SendSerialMessage("2");
+            runningYellowTimer = false;
+        }
+
+        if(greenTimer > 0)
+        {
+            greenTimer -= Time.deltaTime;
+            //print("Green Timer: " + greenTimer.ToString());
+        }else if(greenTimer <= 0 && runningGreenTimer)
+        {
+            print("ALL LEDS ARE ACTIVATED YIPPEEE");
+            Debug.Log("Sending 3");
+            serialController.SendSerialMessage("3");
+            runningGreenTimer = false;
+        }
+
+
+        string message = serialController.ReadSerialMessage();
+
+        if (message == null)
+        {
+            return;
+        }
+        // Check if the message is plain data or a connect/disconnect event.
+        if (ReferenceEquals(message, SerialController.SERIAL_DEVICE_CONNECTED))
+        {
+            Debug.Log("Connection established");
+        }
+
+        else if (ReferenceEquals(message, SerialController.SERIAL_DEVICE_DISCONNECTED))
+        {
+            Debug.Log("Connection attempt failed or disconnection detected");
+        }
+
+        else
+        {
+            Debug.Log("Message arrived: " + message);
+        }
+                
+    }
+
 
 }
