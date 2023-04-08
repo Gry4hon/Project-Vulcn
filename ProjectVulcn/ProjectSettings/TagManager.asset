@@ -25,6 +25,7 @@ TagManager:
   - PlayerUI
   - backpack
   - playerBack
+  - Grabbable
   layers:
   - Default
   - TransparentFX
