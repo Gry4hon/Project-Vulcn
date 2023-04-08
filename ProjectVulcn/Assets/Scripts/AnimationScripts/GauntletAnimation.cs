@@ -25,11 +25,15 @@ public class GauntletAnimation : MonoBehaviour
     public Animator gauntletAnimator;
     public GameObject animatePoint;
 
+    [Header("Arduino Stuff")]
+    public SerialController serialController;
+
     private bool isOn = false;
     private bool isActive = false;
 
     void Start()
     {
+        serialController = GameObject.Find("SerialController").GetComponent<SerialController>();
         gameMaster = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
         List<InputDevice> vrControllers = new List<InputDevice>();
         gauntletGrabbable = GetComponent<XRGrabInteractable>();
@@ -41,6 +45,9 @@ public class GauntletAnimation : MonoBehaviour
 
     void Update()
     {
+
+
+
 
         if (isOn)
         {
@@ -55,10 +62,24 @@ public class GauntletAnimation : MonoBehaviour
             {
                 gauntletAnimator.SetFloat("Trigger", rightGripVal * 2f);
                 animatePoint.SetActive(true);
+
+
             }
             else
             {
                 animatePoint.SetActive(false);
+
+            }
+
+            if (theAbutton)
+            {
+                Debug.Log("Sending A");
+                serialController.SendSerialMessage("A");
+            }
+            else
+            {
+                Debug.Log("Sending Z");
+                serialController.SendSerialMessage("Z");
             }
 
             if (rightGripVal < 0.9 && theAbutton)
@@ -72,6 +93,27 @@ public class GauntletAnimation : MonoBehaviour
                 UISelector.SetActive(false);
             }
 
+            string message = serialController.ReadSerialMessage();
+
+            if (message == null)
+            {
+                return;
+            }
+            // Check if the message is plain data or a connect/disconnect event.
+            if (ReferenceEquals(message, SerialController.SERIAL_DEVICE_CONNECTED))
+            {
+                Debug.Log("Connection established");
+            }
+
+            else if (ReferenceEquals(message, SerialController.SERIAL_DEVICE_DISCONNECTED))
+            {
+                Debug.Log("Connection attempt failed or disconnection detected");
+            }
+
+            else
+            {
+                Debug.Log("Message arrived: " + message);
+            }
 
         }
         
