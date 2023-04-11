@@ -28,6 +28,7 @@ public class GauntletAnimation : MonoBehaviour
     private bool isOn = false;
     private bool isActive = false;
 
+    /*
     [Header("Arduino Stuff")]
     public SerialController serialController;
     private bool isCharging = false;
@@ -39,7 +40,7 @@ public class GauntletAnimation : MonoBehaviour
     bool runningRedTimer = true;
     bool runningYellowTimer = false;
     bool runningGreenTimer = false;
-
+    */
 
 
     void Start()
@@ -51,7 +52,7 @@ public class GauntletAnimation : MonoBehaviour
         InputDevices.GetDevices(vrControllers);
         theGauntlet = this.gameObject;
         theTargetDevice = vrControllers[2];
-        serialController = GameObject.Find("SerialController").GetComponent<SerialController>();
+        //serialController = GameObject.Find("SerialController").GetComponent<SerialController>();
     }
 
 
@@ -72,12 +73,12 @@ public class GauntletAnimation : MonoBehaviour
             {
                 gauntletAnimator.SetFloat("Trigger", rightGripVal * 2f);
                 animatePoint.SetActive(true);
-                isCharging= true;
+                //isCharging= true;
             }
             else
             {
                 animatePoint.SetActive(false);
-                isCharging= false;
+                //isCharging= false;
             }
 
 
@@ -112,11 +113,12 @@ public class GauntletAnimation : MonoBehaviour
             isActive = true;
         }
 
+        /*
         if (isCharging)
         {
             LightUpTheNight();
         }
-
+        */
     }
 
     private void OnTriggerEnter(Collider other)
@@ -130,6 +132,7 @@ public class GauntletAnimation : MonoBehaviour
 
     }
 
+    /*
     private void LightUpTheNight()
     {
 
@@ -198,6 +201,6 @@ public class GauntletAnimation : MonoBehaviour
         }
                 
     }
-
+    */
 
 }
