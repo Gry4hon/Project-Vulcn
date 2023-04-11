@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IObserver
 {
-    public void NotifyClass();
+    public void NotifyClass(bool buttonPressed);
 }

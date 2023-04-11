@@ -38,16 +38,22 @@ public class LeftHandAnimator : MonoBehaviour
 
         if (theXbutton)
         {
-            
-            pauseMenu.SetActive(true);
+            if(pauseMenu != null)
+            {
+                pauseMenu.SetActive(true);
+            }
+
             //playerRayCast.SetActive(true);
             Time.timeScale = 0f;
             
         }
         else
         {
-            
-            pauseMenu.SetActive(false);
+
+            if (pauseMenu != null)
+            {
+                pauseMenu.SetActive(false);
+            }
             //playerRayCast.SetActive(false);
             Time.timeScale = 1f;
             

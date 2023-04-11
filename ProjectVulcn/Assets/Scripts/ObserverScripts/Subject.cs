@@ -16,11 +16,11 @@ public abstract class Subject : MonoBehaviour
         observingClasses.Remove(observingClass);
     }
 
-    protected void NotifyObservingClasses()
+    protected void NotifyObservingClasses(bool buttonPressed)
     {
         observingClasses.ForEach((observerClass) =>
         {
-            observerClass.NotifyClass();
+            observerClass.NotifyClass(buttonPressed);
         });
     }
 
