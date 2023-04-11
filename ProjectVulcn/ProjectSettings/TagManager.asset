@@ -26,6 +26,7 @@ TagManager:
   - backpack
   - playerBack
   - Grabbable
+  - Poke
   layers:
   - Default
   - TransparentFX
