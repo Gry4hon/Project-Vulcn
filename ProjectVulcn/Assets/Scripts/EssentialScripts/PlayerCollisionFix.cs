@@ -14,7 +14,11 @@ public class PlayerCollisionFix : MonoBehaviour
         playerXrOrigin= GetComponent<XROrigin>();
 
         backPack = GameObject.FindGameObjectWithTag("backpack");
-        packCollider = backPack.GetComponent<BoxCollider>();
+        if(backPack != null)
+        {
+            packCollider = backPack.GetComponent<BoxCollider>();
+        }
+
 
     }
     void FixedUpdate()
