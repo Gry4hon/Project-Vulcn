@@ -28,19 +28,22 @@ public class GauntletAnimation : MonoBehaviour
     private bool isOn = false;
     private bool isActive = false;
 
-    /*
+    
     [Header("Arduino Stuff")]
     public SerialController serialController;
-    private bool isCharging = false;
+    public bool isCharging = false;
+    private bool heatActive = false;
 
-    float redTimer = 15f;
+    float redTimer = 5f;
     float yellowTimer = 0f;
     float greenTimer = 0f;
 
     bool runningRedTimer = true;
     bool runningYellowTimer = false;
     bool runningGreenTimer = false;
-    */
+
+
+    
 
 
     void Start()
@@ -73,12 +76,14 @@ public class GauntletAnimation : MonoBehaviour
             {
                 gauntletAnimator.SetFloat("Trigger", rightGripVal * 2f);
                 animatePoint.SetActive(true);
-                //isCharging= true;
+                isCharging= true;
+
             }
             else
             {
                 animatePoint.SetActive(false);
-                //isCharging= false;
+                isCharging= false;
+                heatActive= false;
             }
 
 
@@ -113,12 +118,12 @@ public class GauntletAnimation : MonoBehaviour
             isActive = true;
         }
 
-        /*
+        
         if (isCharging)
         {
             LightUpTheNight();
         }
-        */
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -132,18 +137,25 @@ public class GauntletAnimation : MonoBehaviour
 
     }
 
-    /*
+    
     private void LightUpTheNight()
     {
 
+        if(isCharging && !heatActive)
+        {
+            serialController.SendSerialMessage("0");
+            Debug.Log("STARTING HEAT");
+            heatActive = true;
+        }
 
-        if(redTimer > 0)
+
+        if (redTimer > 0)
         {
             redTimer -= Time.deltaTime;
             //print("Red Timer: " + redTimer.ToString());
         }else if(redTimer <= 0 && runningRedTimer)
         {
-            yellowTimer = 15f;
+            yellowTimer = 5f;
             runningYellowTimer = true;
            print("Red Timer Done... Going to yellow timer");
             Debug.Log("Sending 1");
@@ -157,7 +169,7 @@ public class GauntletAnimation : MonoBehaviour
             //print("Yellow Timer: " + yellowTimer.ToString());
         }else if(yellowTimer <= 0 && runningYellowTimer)
         {
-            greenTimer = 15f;
+            greenTimer = 5f;
             runningGreenTimer = true;
             //print("Yellow Timer Done... Going to green timer");
             Debug.Log("Sending 2");
@@ -201,6 +213,6 @@ public class GauntletAnimation : MonoBehaviour
         }
                 
     }
-    */
+    
 
 }
