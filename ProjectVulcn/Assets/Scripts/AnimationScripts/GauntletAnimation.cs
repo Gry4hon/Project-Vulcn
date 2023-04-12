@@ -33,6 +33,7 @@ public class GauntletAnimation : MonoBehaviour
     public SerialController serialController;
     public bool isCharging = false;
     private bool heatActive = false;
+    private bool heatInactive = true;
 
     float redTimer = 5f;
     float yellowTimer = 0f;
@@ -77,13 +78,14 @@ public class GauntletAnimation : MonoBehaviour
                 gauntletAnimator.SetFloat("Trigger", rightGripVal * 2f);
                 animatePoint.SetActive(true);
                 isCharging= true;
-
+                heatInactive = false;
             }
             else
             {
                 animatePoint.SetActive(false);
                 isCharging= false;
                 heatActive= false;
+
             }
 
 
@@ -122,6 +124,17 @@ public class GauntletAnimation : MonoBehaviour
         if (isCharging)
         {
             LightUpTheNight();
+        }
+
+        if(!isCharging&& !heatInactive) 
+        {
+            serialController.SendSerialMessage("5");
+            redTimer = 5f;
+            runningRedTimer = true;
+            runningYellowTimer = false;
+            runningGreenTimer = false;
+            print("Running ONLY ONCE");
+            heatInactive = true;
         }
         
     }
